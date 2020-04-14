@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://unpkg.com/vue"></script>
+
+  <div id="app">
+
+    <h1>To Do List</h1>
+
+    <label for="Task">Task</label>
+    <input id="input" type="text" v-model="newTask">
+    <button v-on:click="addToDo" >Añadir</button>
+
+    <h2>To Do</h2>
+    <ul>
+      <li v-for="task in toDo">{{ task }}</li>
+      
+    </ul>
+
+    <h2>Done</h2>
+    <ul>
+      <li v-for = "task in done">{{ task }}</li>
+    </ul>
+  </div>
+ 
+
+  <script>
+    const app = new Vue ({
+      el: "#app",
+      data : {
+        toDo: [
+        ],
+        done : ["barrer",
+
+        ]
+      },
+      methods: {
+        addToDo() {
+          this.toDo.unshift(this.newTask)
+          this.newTask=""
+        }
+      }
+    })
+  </script>
+</body>
+</html>
