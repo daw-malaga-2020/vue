@@ -1,0 +1,38 @@
+.inputTask{
+  width: 40%;
+  padding: 15px;
+  justify-content: center;
+  text-align: center;
+  font-size: 35px;
+  border: 1px solid green;
+  background: #ccc;
+  margin-left: 460px;
+}
+.todo {
+  width: 48%;
+  height: 80vh;
+  border: 1px solid black;
+  float:left;
+  margin-top: 40px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  
+}
+.done {
+  width: 48%;
+  height: 80vh;
+  border: 1px solid black;
+  float:right;
+  margin-top: 40px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  
+}
+ul.todo-list{
+  background: green;
+}
+ul.done-list {
+  background: red;
+}
