@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El super del confinamiento</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+
+
+<div id="app">
+
+  <h1>Llenando el carrito:</h1>
+
+
+
+  <label for="producto">Producto</label><br>
+    <select name="select" id="frutas" v-model="selected">
+      <option v-for="item in productos" :key="item.id" v-bind:value="item" > {{ item.nombre }} </option>
+    </select>
+  <br>
+  <br>
+  <p>Precio: <span> {{selected.precio}} eur por unidad</span></p>
+
+  <label for="unidades">Unidades</label>
+    <input type="number" name="unidades" id="unidades" min="0" v-model="unidades">
+  
+  <div> 
+    <p>{{selected.urlImg}}</p>
+    <p>{{selected.descripcion}}</p>
+  </div>
+
+  <button v-on:click="añadirAlCarrito">Añadir al carrito</button>
+
+
+<div>
+  <ul>Su carrito contiene:</ul>
+  <li v-for="item in carrito">{{ item.nombre}}}</li>
+  <p>Total:</p>
+</div>
+</div>
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+
+  const app = new Vue ({
+    el:"#app",
+    data: {
+      selected:"",
+      unidades:"",
+      productos: [
+        {
+          id: 1,
+          nombre: "manzanas",
+          precio: 1 , 
+          urlImg:"./img/manzanas.jpg",
+          descripcion: " Fruto del manzano, de forma globosa algo hundida por los extremos del eje, de epicarpio delgado, liso y de color verde claro"
+        },
+        {
+          id: 2,
+          nombre: "plátanos",
+          precio: 2 , 
+          urlImg:"./img/platanos.jpg",
+          descripcion: " Fruto del manzano, de forma globosa algo hundida por los extremos del eje, de epicarpio delgado, liso y de color verde claro"
+        },
+        {
+          id: 3,
+          nombre: "naranjas",
+          precio: 3 , 
+          urlImg:"./img/naranja.jpg",
+          descripcion: " Fruto del manzano, de forma globosa algo hundida por los extremos del eje, de epicarpio delgado, liso y de color verde claro"
+        },
+        {
+          id: 4,
+          nombre: "kiwis",
+          precio: 4 , 
+          urlImg:"./img/kiwi.jpg",
+          descripcion: " Fruto del manzano, de forma globosa algo hundida por los extremos del eje, de epicarpio delgado, liso y de color verde claro"
+        }
+      ],
+      carrito: [
+
+      ]
+    },
+    methods: {
+      añadirAlCarrito(){
+        this.selected.unidades = unidades;
+        this.carrito.unshift(this.selected)
+        return console.log(carrito)
+      }
+    }
+    
+  })
+  
+</script>
+</body>
+</html>
