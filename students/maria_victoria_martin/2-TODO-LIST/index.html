@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Todolist</title>
+</head>
+<body>
+
+<div id="app">
+<header class="container-fluid text-center">
+    <h1>TODO LIST</h1>
+  <div class="p-3">
+   
+      <label for="name">¿Qué quieres hacer?</label>
+      <input id="" v-model="newTask" class="inputTask" type="text">
+      <button v-on:click="addTask" class="p-3 btn-dark">AÑADIR TAREA</button>
+   
+  </div>
+</header>
+
+<section class="container p-3">
+    <div class="row">
+      <div class="col-sm-6">
+        <h2>TODOS</h2>
+        <div class="col-sm-6 p-3">
+          <div class="todoList" >
+            <ul>
+            <li v-for="task in pendingTask" v-on:click="task.done=true" :key="task.id">{{ task.text }}</li>
+              <span class="clear"></span>
+              <span class="done"></span>
+             </ul>
+          </div>
+          <div><a href="#" class=" clearTodo btn-dark p-3">CLEAR</a>
+            <a href="#" class=" btnDone btn-dark p-3">DONE</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 p-3">
+        <h2>TAREAS HECHAS</h2>
+    <div class="doneList">
+      <ul>
+        <li v-for="task in doneTask" v-on:click="task.done=false" :key="task.id">{{task.text}}</li>
+      </ul>
+    </div>
+    <div><a href="#" class=" clearDone btn-dark p-3">CLEAR</a></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="https://unpkg.com/vue"></script>
+<script src="app.js"></script>
+</body>
+</html>

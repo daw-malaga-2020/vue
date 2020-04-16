@@ -1,0 +1,21 @@
+.todoList {
+  background: rgb(219, 119, 119);
+  padding:20px;
+  border:solid; color: #333;
+  width: 40vw;
+  height: 50vh;
+
+
+}
+
+.doneList {
+  background: seagreen;
+  padding:20px;
+  border:solid; color: #333;
+  width: 40vw;
+  height: 50vh;
+}
+
+a {
+padding: 20px
+}
