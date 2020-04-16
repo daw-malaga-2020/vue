@@ -75,19 +75,9 @@
                     description: "",
                     id: null
                 },
-                products: [{
-                    name: "Producto 1",
-                    price: 5,
-                    urlImg: "",
-                    description: "",
-                    id: 1
-                }, {
-                    name: "Producto 2",
-                    price: 4,
-                    urlImg: "",
-                    description: "",
-                    id: 2
-                }, ]
+                products: [
+
+                ]
             },
             computed: {
                 total() {
@@ -126,6 +116,7 @@
                 exitEdit() {
                     this.product = {...this.product
                     }
+                    this.isNew = true
                     this.clearProduct();
                 },
                 clearProduct() {
