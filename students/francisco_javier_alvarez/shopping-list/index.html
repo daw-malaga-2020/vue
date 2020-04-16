@@ -94,7 +94,13 @@
                     if (this.isNew) {
                         this.product.id = new Date().getTime()
                         this.product.urlImg = "https://cdn.icon-icons.com/icons2/1166/PNG/512/1488897564-pear_81763.png";
-                        this.products.push(this.product)
+                        this.products.push({
+                            name: this.product.name,
+                            price: this.product.price,
+                            urlImg: this.product.urlImg,
+                            description: this.product.description,
+                            id: this.product.id
+                        })
                         this.clearProduct()
                     } else {
 
