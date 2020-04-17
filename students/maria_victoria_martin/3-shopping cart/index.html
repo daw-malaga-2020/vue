@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de la compra</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+
+  <div id="app">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h1>My shopping cart</h1>
+      </div>
+        <div class="col s6">
+          <label for="">Product Name
+            <input type="text" placeholder="add product's name" v-model="product.name">
+        </label>
+        <label for="">Product Price
+            <input type="number" min="0" placeholder="add product's price" v-model.number="product.price">
+        </label>
+        <label for="">Product Photo
+            <input type="text" placeholder="add product's photo" v-model="product.photo">
+        </label>
+        <label for="">Product description
+             <input type="text" placeholder="add product's description" v-model="product.description">
+        </label>
+    
+        <button @click="addProduct" class= "waves-effect waves-light btn">Añadir</button>
+        
+        </div>
+
+        <div class="col s6">
+          <table>
+            <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Photo</th>
+                  <th>Description</th>
+
+              </tr>
+            </thead>
+    
+            <tbody>
+              <tr v-for="product in newProduct" :key="product.id">
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td><img :src="product.photo"></td>
+                <td>{{product.description}}</td>
+                <td> <button @click="deleteProduct" class="waves-effect waves-light btn red">X</button></td>
+              
+
+              </tr>
+            </tbody>
+          </table>
+          <p>TOTAL: {{total}}</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://unpkg.com/vue"></script>  
+  <script type="text/javascript">
+  
+    const app = new Vue({
+      el: '#app',
+      data: {
+          product:[{
+              id: "",
+              name: "",
+              price: "",
+              photo: "",
+              description: "",
+          }],
+          newProduct:[{
+              id: 1,
+              name: "pera",
+              price: 4,
+              photo: "",
+              description: "hola soy una pera"
+          },{
+              id: 2,
+              name: "banana",
+              price: 5,
+              photo: "",
+              description: "hola soy una banana"
+          }],
+        
+      },
+      computed: {
+        total() {
+              let total = 0;
+              if (this.newProduct.length) {
+                  let productsPrice = this.newProduct.map((product) => product.price)
+                  total = productsPrice.reduce((sum, price) => sum + price)
+              }
+                return total
+        }
+      },
+      methods:{
+        addProduct(product) {
+          this.product.id = new Date().getTime()
+          let myProductCopy = {...this.product}  //creo la copia de mi objeto para evitar duplicar, ya que tengo bindado 
+          this.newProduct.push(myProductCopy)
+          this.clearProduct();
+        }, 
+        clearProduct(){
+          this.product.name = "",
+          this.product.price = "",
+          this.product.photo = "",
+          this.product.description = "",
+          this.product.id = ""
+        },
+        deleteProduct(product){
+          let index = this.newProduct.findIndex((item) => item.id === product.id)
+                      this.newProduct.splice(index, 1)
+        },
+        editProduct(product){
+          
+        }
+    } 
+    })
+
+  </script>
+</body>
+</html>

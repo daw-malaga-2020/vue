@@ -94,7 +94,8 @@
                     if (this.isNew) {
                         this.product.id = new Date().getTime()
                         this.product.urlImg = "https://cdn.icon-icons.com/icons2/1166/PNG/512/1488897564-pear_81763.png";
-                        this.products.push(this.product)
+                        const myProduct = Object.assign({}, this.product)
+                        this.products.push(myProduct)
                         this.clearProduct()
                     } else {
 
