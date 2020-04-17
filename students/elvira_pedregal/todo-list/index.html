@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="">
+  <title>To do List</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="d-flex justify-content-center">
+      <h1 style="padding-top:1em">cosas que hacer</h1>
+    </div>
+   
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-6 input-group myinput">
+          <input v-model="newTask" type="text" class="form-control" placeholder="añade una tarea :)">
+          <div class="input-group-append">
+             <button @click="addTask" class="btn btn-outline-secondary" type="button" id="button-addon2">añadir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <div class="container">
+    <div class="row">
+
+      <div class="card todo col-6 mytodolist" style="width: 18rem;">
+        <h3 class="text-center pad-top">to do</h2>
+        <ul class="list-group list-group-flush">
+          <div class="row">
+            <li class="list-group-item col-10 pointer mytodolist" v-for="task in todo" @click="passToDone(task)" :key="task.id">{{task.text}}</li> 
+          </div>
+        </ul>
+      </div>
+
+      <div class="card done col-6 mydonelist" style="width: 18rem;">
+        <h3 class="text-center pad-top">done</h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item pointer mydonelist" v-for="task in done" @click="removeFromDone(task)">{{task.text}}</li>
+         
+        </ul>
+      </div>
+    
+    </div>
+  </div>
+    
+  
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  <script src="https://unpkg.com/vue"></script>
+
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data: {
+        newTask:"",
+        todo:[{
+            text: "pulsando sobre la tareas la pasas a la  lista done:)",
+            id:1
+          }],
+        done:[{
+            text: "pulsando sobre una tarea la eliminas :)",
+            id:2
+        }]
+      },
+      methods: {
+        addTask(){
+          id = new Date().getTime();
+          this.todo.unshift({
+            text: this.newTask,
+            id : id
+          })
+          this.newTask = ""
+        },
+
+        passToDone(task){
+          this.done.unshift(task)
+          let id = task.id
+          let index = this.todo.findIndex((item) => item.id === id)
+          this.todo.splice(index, 1)
+        },
+
+        removeFromDone(task){
+          let id = task.id
+          let index = this.done.findIndex((task) => task.id === id || task.id === 2 || task.id === 1)
+          this.done.splice(index, 1)
+        },
+      }
+    })
+
+</script>
+  
+</body>
+</html>
+
