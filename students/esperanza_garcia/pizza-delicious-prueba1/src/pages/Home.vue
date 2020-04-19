@@ -30,6 +30,11 @@ export default {
     SectionServices,
     SectionBlog,
     MainFooter
+  },
+  data(){
+    return{
+      headingSection:"our menu pricing"
+    }
   }
 }
 </script>

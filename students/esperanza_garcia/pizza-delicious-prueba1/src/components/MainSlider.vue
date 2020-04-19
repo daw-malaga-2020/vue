@@ -9,7 +9,7 @@
 			>
 			  <div class="col-md-7 col-sm-12 text-center ">
 				<span class="subheading">Welcome</span>
-				<h1 class="mb-4">We cooked your desired Pizza Recipe</h1>
+				<h1 class="mb-4" v-bind:titleSlider="titleSlider"></h1>
 				<p class="mb-4 mb-md-5">
 				  A small river named Duden flows by their place and supplies it
 				  with the necessary regelialia.
@@ -25,3 +25,12 @@
 		</div>
 	  </section>
 </template>
+<script>
+export default {
+	props:{
+		titleSlider: {
+			default: "We cooked your desired Pizza Recipe"
+		}
+	}
+}
+</script>

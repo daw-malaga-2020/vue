@@ -4,7 +4,8 @@
           <div class="row d-md-flex">
             <div class="col-lg-12  p-md-5">
               <div class="row">
-                <div class="col-md-12 nav-link-wrap mb-5 d-flex">
+                <SelectTypeOfFood></SelectTypeOfFood>
+                <!-- <div class="col-md-12 nav-link-wrap mb-5 d-flex">
                   <div
                     class="nav  nav-pills mx-auto"
                     id="v-pills-tab"
@@ -55,7 +56,7 @@
                       >Pasta</a
                     >
                   </div>
-                </div>
+                </div> -->
                 <div class="col-md-12 d-flex align-items-center">
                   <div class="tab-content " id="v-pills-tabContent">
                     <div
@@ -391,3 +392,18 @@
         </div>
 </section>
 </template>
+<script>
+import SelectTypeOfFood from '../partials/SelectTypeOfFood'
+
+export default {
+  name:"MainMenu",
+  components:{
+    SelectTypeOfFood
+  },
+  data(){
+    return{
+      
+    }
+  }
+}
+</script>
