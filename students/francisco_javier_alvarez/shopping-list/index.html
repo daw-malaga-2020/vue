@@ -75,19 +75,9 @@
                     description: "",
                     id: null
                 },
-                products: [{
-                    name: "Producto 1",
-                    price: 5,
-                    urlImg: "",
-                    description: "",
-                    id: 1
-                }, {
-                    name: "Producto 2",
-                    price: 4,
-                    urlImg: "",
-                    description: "",
-                    id: 2
-                }, ]
+                products: [
+
+                ]
             },
             computed: {
                 total() {
@@ -100,31 +90,34 @@
                 }
             },
             methods: {
-                saveProduct() {
+                saveProduct(product) {
                     if (this.isNew) {
                         this.product.id = new Date().getTime()
                         this.product.urlImg = "https://cdn.icon-icons.com/icons2/1166/PNG/512/1488897564-pear_81763.png";
-                        
-                        let myProduct  = {... this.product}
+                        const myProduct = Object.assign({}, this.product)
                         this.products.push(myProduct)
                         this.clearProduct()
+                    } else {
+
+                        this.product = product
                     }
                 },
                 addProduct() {
                     this.isNew = true
-                    this.saveProduct(this.pro)
+                    this.saveProduct()
                 },
                 editProduct(product) {
                     this.isNew = false
-                    this.product = product
+                    this.saveProduct(product)
                 },
                 removeProduct(product) {
                     let index = this.products.findIndex((item) => item.id === product.id)
                     this.products.splice(index, 1)
                 },
                 exitEdit() {
+                    this.product = {...this.product
+                    }
                     this.isNew = true
-                    this.product = { ...this.product }
                     this.clearProduct();
                 },
                 clearProduct() {

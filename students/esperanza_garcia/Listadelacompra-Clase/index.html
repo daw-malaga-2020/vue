@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <title>Lista de la compra</title>
+</head>
+<body>
+
+  <div id="app">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h1>Shopping List</h1>
+        </div>
+        <div class="col s6">
+          <label for="">
+            <p>Name of product:</p>
+            <input type="text" v-model="newItem.name">
+          </label>
+
+          <label for="">
+            <p>Price</p>
+            <input type="number" min="0" v-model.number="newItem.price">
+          </label>
+
+          <label for="">
+            <p>Image</p>
+            <input type="text" v-model="newItem.urlImg">
+          </label>
+
+          <label for="">
+            <p>Description</p>
+            <input type="text" v-model="newItem.description">
+          </label>
+          <button @click="addItem" v-if="isNew">Add</button>
+          <button @click="exitEdit" v-else >Save Edit</button>
+        </div>
+        <div class="col s6">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Photo</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr v-for="item in shoppingCart">
+                <td >{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td><img :src="item.urlImg" alt="imagen del producto" width="30%"> </td>
+                <td>
+                  <button @click="editItem(newItem)" class="btn green" width="20%">E</button>
+                  <button @click="deleteItem(newItem)" class="btn red" width="10%">X</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Total: {{totalPrice}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<script>
+  const app = new Vue ({
+    el:"#app",
+    data:{
+      isNew: true,
+      newItem: {
+        name:"",
+        price: "",
+        description:"",
+        urlImg:"",
+        id: ""
+      },
+      shoppingCart:[
+        {
+        name:"platano",
+        price: 2,
+        description:"fruta",
+        urlImg:"./img/platanos.jpg"
+        }
+      ]
+    },
+    computed:{
+      totalPrice() {
+        if(this.shoppingCart.length>0){
+        let totalPrice= 0;
+        let itemPrice= this.shoppingCart.map((item)=>item.price);
+        totalPrice =itemPrice.reduce((sum, price)=>sum + price) 
+        return totalPrice
+        }
+      }
+    },
+    methods:{
+      saveItem(){
+        if(this.isNew){
+        this.newItem.id= new Date().getTime()
+        let newItemCopy= {...this.newItem}
+        this.shoppingCart.push(newItemCopy)
+        this.clearNewItem()
+        }
+      },
+
+      addItem(){
+        this.isNew=true
+        this.saveItem()
+      },
+      exitEdit(){
+        this.isNew = true
+        this.clearNewItem() 
+      },
+      clearNewItem(){
+        this.newItem.name=""
+        this.newItem.price=""
+        this.newItem.urlImg=""
+        this.newItem.description=""
+      },
+      editItem(){
+        this.isNew= false
+        this.newItemCopy= newItem
+        console.log("estás funcionando")
+      },
+      deleteItem(newItem){
+        let index = this.shoppingCart.findIndex((item)=> item.id === newItem.id)
+        this.shoppingCart.splice(index, 1) 
+        console.log("está funcionando")
+      }
+    }
+  });
+</script>
+  
+</body>
+</html>

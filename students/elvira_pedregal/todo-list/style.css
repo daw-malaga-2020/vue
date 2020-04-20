@@ -1,0 +1,25 @@
+.myinput{
+  padding-bottom: 2em;
+  padding-top: 2em;
+}
+
+.pad-top{
+ padding-top: 0.5em;
+}
+
+.pointer{
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.pointer:hover{
+  text-decoration: line-through;
+}
+
+.mytodolist{
+  background-color:orange
+}
+
+.mydonelist{
+  background-color:chartreuse
+}

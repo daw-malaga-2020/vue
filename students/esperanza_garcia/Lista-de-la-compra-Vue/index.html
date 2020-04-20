@@ -15,7 +15,7 @@
   <h1>Llenando el carrito:</h1>
 
 
-
+<form action="">
   <label for="producto">Producto</label><br>
     <select name="select" id="frutas" v-model="selected">
       <option v-for="item in productos" :key="item.id" v-bind:value="item" > {{ item.nombre }} </option>
@@ -32,8 +32,8 @@
     <p>{{selected.descripcion}}</p>
   </div>
 
-  <button v-on:click="añadirAlCarrito">Añadir al carrito</button>
-
+  <button @click.prevent="añadirAlCarrito">Añadir al carrito</button>
+</form>
 
 <div>
   <ul>Su carrito contiene:</ul>
