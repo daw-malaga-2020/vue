@@ -64,12 +64,19 @@
         newTask:"",
         todo:[{
             text: "pulsando sobre la tareas la pasas a la  lista done:)",
-            id:1
+            id:1,
+            done: false
           }],
         done:[{
             text: "pulsando sobre una tarea la eliminas :)",
-            id:2
+            id:2,
+            done: true
         }]
+      },
+      computed : {
+        pendingTasks(){
+           this.todo.filter( (task ) => task.done === false )
+        }
       },
       methods: {
         addTask(){
