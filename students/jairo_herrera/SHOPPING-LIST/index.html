@@ -100,15 +100,12 @@
                 }
             },
             methods: {
-                saveProduct(product) {
+                saveProduct() {
                     if (this.isNew) {
                         this.product.id = new Date().getTime()
                         this.product.urlImg = "https://cdn.icon-icons.com/icons2/1166/PNG/512/1488897564-pear_81763.png";
                         this.products.push(this.product)
                         this.clearProduct()
-                    } else {
-
-                        this.product = product
                     }
                 },
                 addProduct() {
@@ -124,11 +121,11 @@
                     this.products.splice(index, 1)
                 },
                 exitEdit() {
-                    this.product = {...this.product
-                    }
+                    this.isNew = true
                     this.clearProduct();
                 },
                 clearProduct() {
+                    this.product = {...this.product}
                     this.product.name = ""
                     this.product.price = ""
                     this.product.urlImg = ""
