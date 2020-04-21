@@ -1,0 +1,34 @@
+body {
+	background-color: #999;
+}
+
+.inputTask, .addBtn {
+	display: block;
+	margin: 0 auto;
+	margin-top: 5em;
+	width: 60%;
+	font-size: 1.5em;
+	padding: 0.5em 
+}
+
+.todo , .done {
+	overflow: auto;
+	display: inline-block;
+	width: 47.5%;
+	vertical-align: top;
+	height: 20em;
+	background-color: #fff;
+	margin: 4% 1%; 
+}
+
+.todo h3, .done h3 {
+	text-align: center;
+	text-decoration: underline;
+}
+
+.todo-element {
+	background-color: green;
+}
+.done-element {
+	background-color: red;
+}
