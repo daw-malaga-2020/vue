@@ -6,9 +6,9 @@
 		  </div>
 		</div>
 		<div class="container-wrap">
-			<ArticlesPizzas v-for="ArticlesPizzas in typesOfPizzas"></ArticlesPizzas>
-			<!-- Articulos de pizza originales -->
-				<!-- <div class="row no-gutters d-flex">
+			<!-- <ArticlesPizzas v-for="ArticlesPizzas in typesOfPizzas"></ArticlesPizzas> -->
+		 	<!-- Articulos de pizza originales -->
+				<div class="row no-gutters d-flex">
 				<div class="col-lg-4 d-flex ">
 					<div class="services-wrap d-flex">
 					<a
@@ -142,7 +142,7 @@
 					</div>
 					</div>
 				</div>
-		  </div> -->
+		  </div> 
 		</div>
 		
 		
@@ -164,8 +164,8 @@
 				</div>
 				<div class="row">
 				<div class="col-md-6">
-					<PizzasOfMenu v-for="Pizza in menuOfPizzas"></PizzasOfMenu>
-					<!-- <div class="pricing-entry d-flex ">
+					<!-- <PizzasOfMenu v-for="Pizza in menuOfPizzas"></PizzasOfMenu> -->
+					<div class="pricing-entry d-flex ">
 						<div
 							class="img"
 							style="background-image: url(images/pizza-1.jpg);"
@@ -232,12 +232,12 @@
 							</p>
 							</div>
 						</div>
-					</div> -->
+					</div>
 				</div>
 		
 				<div class="col-md-6">
-					<PizzasOfMenu v-for="Pizza in menuOfPizzas"></PizzasOfMenu>
-					<!-- <div class="pricing-entry d-flex ">
+					<!-- <PizzasOfMenu v-for="Pizza in menuOfPizzas"></PizzasOfMenu> -->
+					<div class="pricing-entry d-flex ">
 						<div
 							class="img"
 							style="background-image: url(images/pizza-5.jpg);"
@@ -304,7 +304,7 @@
 							</p>
 							</div>
 							</div>
-					</div> -->
+					</div>
 					</div> 
 				</div>
 			</div>

@@ -1,26 +1,29 @@
 <template>
 <div>
-  <MainNav></MainNav>
-  <MainSlider/>
+  <MainSlider :mainTitleSlider="mainTitleSlider" :descriptionSlider="descriptionSlider">
+  </MainSlider>
   <SectionContact/>
-  <MainFooter/>
 </div>
 </template>
 
 <script>
 
-import MainNav from '../components/MainNav'
+
 import MainSlider from '../components/MainSlider'
 import SectionContact from '../components/SectionContact'
-import MainFooter from '../components/MainFooter'
+
 
 export default {
   name:"Contact",
+  data(){
+    return{
+      mainTitleSlider: "contact us",
+      descriptionSlider: "give us some delicious feedback"
+    }
+  },
   components: {
-    MainNav,
     MainSlider,
-    SectionContact,
-    MainFooter
+    SectionContact
   }
 }
 </script>

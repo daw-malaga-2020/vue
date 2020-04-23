@@ -12,8 +12,8 @@
 			</div>
 		  </div>
 		  <div class="row">
-				<ArticleServices v-for="services in theServices"/>
-				<!-- <div class="col-md-4 ">
+				<!-- <ArticleServices v-for="services in theServices"/> -->
+				<div class="col-md-4 ">
 					<div class="media d-block text-center block-6 services">
 					<div
 						class="icon d-flex justify-content-center align-items-center mb-5"
@@ -60,7 +60,7 @@
 						</p>
 					</div>
 					</div>
-				</div> -->
+				</div>
 		  </div>
 		</div>
 	  </section>
@@ -71,7 +71,7 @@
 import ArticleServices from '../partials/ArticleServices'
 
 export default {
-	name:"SectionServices",
+	name:"OurServices",
 	components: {
 		ArticleServices
 	},

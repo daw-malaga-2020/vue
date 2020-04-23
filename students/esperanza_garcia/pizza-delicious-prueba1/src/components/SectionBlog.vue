@@ -13,8 +13,8 @@
 			</div> -->
 		  </div>
 		  <div class="row d-flex">
-				<ArticleRecentBlog v-for="blog in recentsBlogs"></ArticleRecentBlog>
-				<!-- <div class="col-md-4 d-flex ">
+				<!-- <ArticleRecentBlog v-for="blog in recentsBlogs"></ArticleRecentBlog> -->
+				<div class="col-md-4 d-flex ">
 					<div class="blog-entry align-self-stretch">
 					<a
 						href="blog-single.html"
@@ -91,7 +91,7 @@
 						</p>
 					</div>
 					</div>
-				</div> -->
+				</div>
 		  </div>
 		</div>
 	  </section>
