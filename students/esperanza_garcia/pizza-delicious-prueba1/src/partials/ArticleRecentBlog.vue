@@ -4,25 +4,29 @@
 					<a
 						href="blog-single.html"
 						class="block-20"
-						style="background-image: url('images/image_1.jpg');"
+						:style='"background-image: url("+ img +");"'
 					>
 					</a>
 					<div class="text py-4 d-block">
 						<div class="meta">
-						<div><a href="#">Sept 10, 2018</a></div>
-						<div><a href="#">Admin</a></div>
+						<div><a href="#">{{date}}</a></div>
+						<div><a href="#">{{author}}</a></div>
 						<div>
 							<a href="#" class="meta-chat"
-							><span class="icon-chat"></span> 3</a
+							><span class="icon-chat"></span> {{numberOfComments}}</a
 							>
 						</div>
 						</div>
-						<h3 class="heading mt-2"><a href="#">The Delicious Pizza</a></h3>
+						<h3 class="heading mt-2"><a href="#">{{titleBlog}}</a></h3>
 						<p>
-						A small river named Duden flows by their place and supplies it
-						with the necessary regelialia.
+						{{resumeBlog}}
 						</p>
 					</div>
 					</div>
 				</div>
 </template>
+<script>
+export default {
+	props:["resumeBlog","titleBlog","numberOfComments","author","date"]
+}
+</script>
