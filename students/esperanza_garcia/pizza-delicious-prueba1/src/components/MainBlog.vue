@@ -3,14 +3,14 @@
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
           <TitleSection></TitleSection>
-          <!-- <div class="col-md-7 heading-section  text-center">
+          <div class="col-md-7 heading-section  text-center">
             <h2 class="mb-4">Read our blog</h2>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-          </div> -->
+          </div>
         </div>
         <div class="row d-flex">
-          <ArticlesBlog v-for="blog in blogs"></ArticlesBlog>
-          <!-- <div class="col-md-4 d-flex ">
+          <!-- <ArticlesBlog v-for="blog in blogs"></ArticlesBlog> -->
+          <div class="col-md-4 d-flex ">
           	<div class="blog-entry align-self-stretch">
               <a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
               </a>
@@ -99,7 +99,7 @@
                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
               </div>
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
     </section>

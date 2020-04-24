@@ -8,16 +8,12 @@
 			  data-scrollax-parent="true"
 			>
 			  <div class="col-md-7 col-sm-12 text-center ">
-				<span class="subheading">Welcome</span>
-				<h1 class="mb-4" v-bind:titleSlider="titleSlider"></h1>
-				<p class="mb-4 mb-md-5">
-				  A small river named Duden flows by their place and supplies it
-				  with the necessary regelialia.
+				<span class="subheading">{{subheadingMainSlider}}</span>
+				<h1 class="mb-4" >{{mainTitleSlider}}</h1>
+				<p class="mb-4 mb-md-5"> {{descriptionSlider}}
 				</p>
 				<p>
-				  <a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3"
-					>Order Now</a
-				  >
+				  <slot name="buttonOrderNow"></slot>
 				</p>
 			  </div>
 			</div>
@@ -27,10 +23,7 @@
 </template>
 <script>
 export default {
-	props:{
-		titleSlider: {
-			default: "We cooked your desired Pizza Recipe"
-		}
-	}
+	props:[ "subheadingMainSlider", "mainTitleSlider", "descriptionSlider"
+	]
 }
 </script>
