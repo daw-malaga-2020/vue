@@ -1,28 +1,30 @@
 <template>
   <div id="app">
-    <Home></Home>
-    <Pedidos></Pedidos>
-    <Contacto></Contacto>
-    <Blog></Blog>
+
+    <MainNav />
+
+    <router-view></router-view>
+
+    <FooterUno />
+
   </div>
 </template>
 
 <script>
-import Home from './pages/Home'
-import Pedidos from './pages/Pedidos'
-import Contacto from './pages/Contacto'
-import Blog from './pages/Blog'
-
+import MainNav from "@/components/MainNav"
+import FooterUno from "@/components/FooterUno"
 export default {
-  name: 'App',
+  name: "App",
+  data(){
+    return {
+     
+    }
+  },
   components: {
-    Home,
-    Pedidos,
-    Contacto,
-    Blog,
-    
+    MainNav, 
+    FooterUno,
   }
-}
+};
 </script>
 
 <style lang="scss">

@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <section class="ftco-section">
+	  <section class="ftco-section">
 		<div class="container">
 		  <div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 heading-section  text-center">
@@ -14,29 +13,16 @@
 		</div>
 		<div class="container-wrap">
 		  <div class="row no-gutters d-flex">
-			<div class="col-lg-4 d-flex ">
-			  <div class="services-wrap d-flex">
-				<a
-				  href="#"
-				  class="img"
-				  style="background-image: url(images/pizza-1.jpg);"
-				></a>
-				<div class="text p-4">
-				  <h3>Italian Pizza</h3>
-				  <p>
-					Far far away, behind the word mountains, far from the countries
-					Vokalia and Consonantia
-				  </p>
-				  <p class="price">
-					<span>$2.90</span>
-					<a href="#" class="ml-2 btn btn-white btn-outline-white"
-					  >Order</a
-					>
-				  </p>
-				</div>
-			  </div>
-			</div>
-			<div class="col-lg-4 d-flex ">
+	
+			<FeaturePizzaItem v-for="item in featurePizzas" :key="item.id" 
+				:title="item.title"
+				:img="item.img"
+				:desc="item.desc"
+				:price="item.price"
+			/>
+
+
+			<!-- <div class="col-lg-4 d-flex ">
 			  <div class="services-wrap d-flex">
 				<a
 				  href="#"
@@ -146,7 +132,9 @@
 				  </p>
 				</div>
 			  </div>
-			</div>
+			</div> -->
+
+
 		  </div>
 		</div>
 	
@@ -309,5 +297,21 @@
 		  </div>
 		</div>
 	  </section>
-  </div>
 </template>
+
+<script>
+import FeaturePizzaItem from '@/partials/FeaturePizzaItem'
+export default {
+	data(){
+		return {
+			featurePizzas: [
+				{id: 1, title: "Pizza simple", img: "images/pizza-5.jpg", desc: "Esta es una pizza simple", price: 10},
+				{id: 2, title: "Pizza jamón york ", img: "images/pizza-2.jpg", desc: "Esta es una pizza de Jamón York", price: 9}
+			]
+		}
+	},
+	components: {
+		FeaturePizzaItem
+	}
+}
+</script>

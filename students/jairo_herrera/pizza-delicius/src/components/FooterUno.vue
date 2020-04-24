@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <footer class="ftco-footer ftco-section img">
+  <footer class="ftco-footer ftco-section img">
     <div class="overlay"></div>
     <div class="container">
       <div class="row mb-5">
@@ -137,5 +136,5 @@
       </div>
     </div>
   </footer>
-  </div>
+
 </template>
