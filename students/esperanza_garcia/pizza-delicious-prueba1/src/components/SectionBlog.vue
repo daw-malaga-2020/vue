@@ -2,15 +2,14 @@
   	  <section class="ftco-section">
 		<div class="container">
 		  <div class="row justify-content-center mb-5 pb-3">
-				<TitleSection></TitleSection>
 				
-			<!-- <div class="col-md-7 heading-section  text-center">
+			<div class="col-md-7 heading-section  text-center">
 			  <h2 class="mb-4">Recent from blog</h2>
 			  <p>
 				Far far away, behind the word mountains, far from the countries
 				Vokalia and Consonantia, there live the blind texts.
 			  </p>
-			</div> -->
+			</div>
 		  </div>
 		  <div class="row d-flex">
 			 <ArticleRecentBlog v-for="item in recentsBlogs" :resumeBlog="item.resumeBlog" :titleBlog="item.titleBlog" :numberOfComments="item.numberOfComments" :author="item.author" :date="item.date" :img="item.img" :key="item.id"></ArticleRecentBlog> 
@@ -21,13 +20,12 @@
 </template>
 <script>
 
-import TitleSection from '../partials/TitleSection'
+
 import ArticleRecentBlog from '../partials/ArticleRecentBlog'
 
 export default {
 	name: "SectionBlog",
 	components: {
-		TitleSection,
 		ArticleRecentBlog
 	},
 	data(){
