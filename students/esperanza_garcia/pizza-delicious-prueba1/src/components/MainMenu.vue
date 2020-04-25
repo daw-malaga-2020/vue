@@ -1,4 +1,5 @@
 <template>
+<div>
   <section class="ftco-menu">
         <div class="container-fluid">
           <div class="row d-md-flex">
@@ -65,7 +66,7 @@
                       role="tablist"
                       aria-orientation="vertical">
                   
-                    <a class="nav-link" data-toggle="pill" role="tab" v-for="item in menu" :key="item.id" :href="item.href" :ariaControls="item.ariaControls" :ariaSelected="item.ariaSelected" @click="category=item.category">{{item.name}}</a>
+                    <a class="nav-link" data-toggle="pill" role="tab" v-for="item in menu" :key="item.id" :href="item.href" :ariaControls="item.ariaControls" :ariaSelected="item.ariaSelected" @click="category=item.category" :item="item">{{item.name}}</a>
                     
                     </div>
                   </div>
@@ -78,7 +79,7 @@
                       role="tabpanel"
                       aria-labelledby="v-pills-1-tab">
                       <div class="row">
-                        <ProductItem v-for="item in productsFiltered" :key="item.id" :img="item.img" :description="item.description" :name="item.name" :price="item.price" ></ProductItem>
+                        <ProductItem v-for="item in productsFiltered" :key="item.id" :img="item.img" :description="item.description" :name="item.name" :price="item.price" @click.prevent="addProduct" ></ProductItem>
                         
                       </div>
                   </div>
@@ -88,7 +89,53 @@
           </div>
         </div>
       </div>
-</section>
+  </section>
+    <section class="ftco-intro">
+    <div class="container-wrap">
+      <div class="wrap d-md-flex">
+        <div class="info">
+          <div class="row no-gutters">
+            <div class="col-md-4 d-flex">
+              <div class="text">
+                <h3>YOU ORDER</h3>
+                <p>Add your delicious order and press "Order" button </p>
+              </div>
+            </div>
+            <div class="col-md-8 d-flex">
+              <div class="text">
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th scope="col">Product</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="product in orders" :key="product.id">
+                      <td>{{product.name}}</td>
+                      <td>{{quantity}}</td>
+                      <td>{{product.price}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="social d-md-flex pl-md-5 p-4 align-items-center">
+          <div class="text">
+            <h2>TOTAL</h2>
+            <h4>{{totalPrice}}</h4>
+          </div>
+          <a href="#" class="p-3 px-xl-4 py-xl-3 btn-white btn btn-outline-white">Order Now</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</div>
 </template>
 <script>
 import ProductItem from '../partials/ProductItem'
@@ -98,6 +145,10 @@ export default {
   data(){
     return{
       category:"pizza",
+      orders:[
+        {id:1, category:"pizza", name:"Italian Pizza", description:"pizza de italia con tomate y orégano", price:10, img:"xxx", href:"#v-pills-1"},
+        {id:2, category:"pizza", name:"Italian Pizza", description:"pizza de italia con tomate y orégano", price:10, img:"xxx", href:"#v-pills-1"},
+      ],
       products:[
         {id:1, category:"pizza", name:"Italian Pizza", description:"pizza de italia con tomate y orégano", price:"2.90", img:"xxx", href:"#v-pills-1"},
         {id:2, category:"pizza", name:"Italian Pizza", description:"pizza de italia con tomate y orégano", price:"2.90", img:"xxx", href:"#v-pills-2"},
@@ -125,9 +176,26 @@ export default {
       console.log('el evento está saltando, este método no funciona')
       this.category= this.item.category
       return this.category
+    },
+    addProduct(){
+      this.orders.push(this.item)
+      console.log(order)
     }
   },
   computed:{
+    quantity(product){
+      let quantityProducts=this.orders.map((item)=> product.name=== item.name)  
+        let quantity = quantityProducts.length
+      },    
+  
+    totalPrice(){
+      let total= 0;
+      if(this.products.length>0){
+        let ordersPrice= this.orders.map( (product)=> product.price)
+        total = ordersPrice.reduce((sum,price)=> sum + price)
+      }
+     return total
+    },
     productsFiltered(){
       
       return this.products.filter((item)=> item.category===this.category)

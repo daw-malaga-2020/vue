@@ -1,5 +1,6 @@
 <template>
-  <section class="ftco-intro">
+<div></div>
+<!--   <section class="ftco-intro">
   <div class="container-wrap">
     <div class="wrap d-md-flex">
       <div class="info">
@@ -41,7 +42,7 @@
         <a href="#" class="p-3 px-xl-4 py-xl-3 btn-white btn btn-outline-white">Order Now</a>
       </div>
     </div>
-  </div>
+  </div> 
 
-</section>
+</section>-->
 </template>

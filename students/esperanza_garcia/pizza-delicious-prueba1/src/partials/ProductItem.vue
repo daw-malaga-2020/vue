@@ -13,8 +13,7 @@
                               </p>
                               <p class="price"><span>{{price}}</span></p>
                               <p>
-                                <a href="#" class="btn btn-white btn-outline-white"
-                                  >Add to cart</a
+                                <a href="#" class="btn btn-white btn-outline-white" >Add to cart</a
                                 >
                               </p>
                             </div>
