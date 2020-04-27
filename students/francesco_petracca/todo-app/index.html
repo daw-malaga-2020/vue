@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="old_version/css/style.css">
+    <title>To Do List</title>
+</head>
+<body>
+    <div id="app">
+        
+            <input v-model="newTask" type="text" class="inputTask" placeholder="Add a task and Press Enter...">
+
+            <button v-on:click="addTask" class="addBtn">Añadir</button>
+        
+        <div class="todo">
+            <h3>TO DO </h3>
+            <ul class="todo-list">
+                <li v-for="task in pendingTasks" v-on:click="task.done=true" :key="task.id">{{ task.text }}</li>
+            </ul>
+        </div>
+        <div class="done">
+            <h3>DONE </h3>
+            <ul class="done-list">
+                <li v-for="task in doneTasks" v-on:click="task.done=false" :key="task.id">{{ task.text }}</li>
+            </ul>
+        </div>
+    </div>    
+        <script src="https://unpkg.com/vue"></script>
+        <script>
+            const app = new Vue({
+                el: "#app",
+                data: {
+                    toDo: [{
+                        id: 1,
+                        text: "salir",
+                        done: false
+                    }],
+                    
+                    newTask: ""
+                },
+                computed: {
+                    pendingTasks(){
+                        return this.toDo.filter( (item) => item.done===false )
+                    },
+                    doneTasks(){
+                        return this.toDo.filter( (item) => item.done===true )
+                    }
+                },
+                methods: {
+                    addTask() {
+
+                        let timestamp = new Date().getTime(); //esta mierda es buena hace que los elementos tengan un orden unico y no varia (es segun el tiempo)
+                        this.toDo.unshift({
+                            id: timestamp,
+                            text:  this.newTask,
+                            done: false
+                        })
+                        this.newTask = ""
+                    },
+                }
+            })
+        </script>
+    
+</body>
+</html>

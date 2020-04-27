@@ -1,32 +1,13 @@
 <template>
-  <div>
+	<div>
 
-<section class="home-slider owl-carousel img">
-  <div class="slider-item" style="background-image: url(images/bg_3.jpg);">
-    <div class="overlay"></div>
-    <div class="container">
-    <div
-      class="row slider-text justify-content-center align-items-center"
-      data-scrollax-parent="true"
-    >
-      <div class="col-md-7 col-sm-12 text-center ">
-      <span class="subheading">OUR PRODUCTS</span>
-      <h1 class="mb-4"></h1>
-      <p class="mb-4 mb-md-5">
-        
-      </p>
-      <p>
-        <a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3"
-        >Order Now</a
-        >
-      </p>
-      </div>
-    </div>
-    </div>
-  </div>
-</section>
+		<MainSlider />
+    <ProductItem />
+    
 
-    <section class="ftco-menu">
+    
+
+		<section class="ftco-menu">
         <div class="container-fluid">
           <div class="row d-md-flex">
             <div class="col-lg-12  p-md-5">
@@ -85,6 +66,20 @@
                 </div>
                 <div class="col-md-12 d-flex align-items-center">
                   <div class="tab-content " id="v-pills-tabContent">
+                    <div
+                      class="tab-pane fade show active"
+                      id="v-pills-1"
+                      role="tabpanel"
+                      aria-labelledby="v-pills-1-tab"
+                    >
+                      <div class="row">
+
+						<ProductItem v-for="item in productsFiltered" :key="item.id"
+						:title="item.title" />
+                      
+               
+                      </div>
+                    </div>
     
                     <div
                       class="tab-pane fade"
@@ -177,7 +172,7 @@
                               style="background-image: url(images/burger-1.jpg);"
                             ></a>
                             <div class="text">
-                              <h3><a href="#">Itallian Pizza</a></h3>
+                              <h3><a href="#">Burger de carne mechada</a></h3>
                               <p>
                                 Far far away, behind the word mountains, far from
                                 the countries Vokalia and Consonantia.
@@ -199,7 +194,7 @@
                               style="background-image: url(images/burger-2.jpg);"
                             ></a>
                             <div class="text">
-                              <h3><a href="#">Itallian Pizza</a></h3>
+                              <h3><a href="#">Cheese Pizza</a></h3>
                               <p>
                                 Far far away, behind the word mountains, far from
                                 the countries Vokalia and Consonantia.
@@ -258,7 +253,7 @@
                                 Far far away, behind the word mountains, far from
                                 the countries Vokalia and Consonantia.
                               </p>
-                              <p class="price"><span>$2.90</span></p>
+                              <p class="price"><span>$7.90</span></p>
                               <p>
                                 <a href="#" class="btn btn-white btn-outline-white"
                                   >Add to cart</a
@@ -275,17 +270,18 @@
                               style="background-image: url(images/pasta-2.jpg);"
                             ></a>
                             <div class="text">
-                              <h3><a href="#">Itallian Pizza</a></h3>
+                              <h3><a href="#">Russian Pizza</a></h3>
                               <p>
                                 Far far away, behind the word mountains, far from
                                 the countries Vokalia and Consonantia.
                               </p>
-                              <p class="price"><span>$2.90</span></p>
+                              <p class="price"><span>$7.90</span></p>
                               <p>
                                 <a href="#" class="btn btn-white btn-outline-white"
                                   >Add to cart</a
                                 >
                               </p>
+                              <button @click="addProduct" v-if="isNew" class="waves-effect waves-light btn">añadir producto</button>
                             </div>
                           </div>
                         </div>
@@ -297,12 +293,12 @@
                               style="background-image: url(images/pasta-3.jpg);"
                             ></a>
                             <div class="text">
-                              <h3><a href="#">Itallian Pizza</a></h3>
+                              <h3><a href="#">Hawaiana Pizza</a></h3>
                               <p>
                                 Far far away, behind the word mountains, far from
                                 the countries Vokalia and Consonantia.
                               </p>
-                              <p class="price"><span>$2.90</span></p>
+                              <p class="price"><span>$7.90</span></p>
                               <p>
                                 <a href="#" class="btn btn-white btn-outline-white"
                                   >Add to cart</a
@@ -328,7 +324,7 @@
         <div class="row no-gutters">
           <div class="col-md-4 d-flex">
             <div class="text">
-              <h3>YOU ORDER</h3>
+              <h3>OUR PRODUCTS</h3>
               <p>Add your delicious order and press "Order" button </p>
             </div>
           </div>
@@ -360,14 +356,48 @@
           <h2>TOTAL</h2>
           <h4>10,5 €</h4>
         </div>
-        <a href="#" class="p-3 px-xl-4 py-xl-3 btn-white btn btn-outline-white">Order Now</a>
+        <a href="./pages/OrderPage" class="p-3 px-xl-4 py-xl-3 btn-white btn btn-outline-white">Order Now</a>
       </div>
     </div>
   </div>
 
 </section>
-
-
-
-  </div>
+	</div>
 </template>
+<script src="https://unpkg.com/vue"></script>
+<script>
+import MainSlider from '@/components/MainSlider'
+import ProductItem from '@/partials/ProductItem'
+
+export default {
+	data(){
+		return {
+			products: [
+				{id: 1, category: "pizza", title: "Pizza simple", img: "images/pizza-5.jpg", desc: "Esta es una pizza simple", price: 10},
+				{id: 2, category: "pizza", title: "Pizza de Mantecados ", img: "images/pizza-2.jpg", desc: "Esta es una pizza de Jamón York", price: 9},
+        {id: 3, category: "drink", title: "lemonade drink", img:"images/drink-1.jpg", desc: "Esta es una jugosa y fresquita Limonada", price: 2.90},
+        {id: 3, category: "drink", title: "PineaPle Juice", img:"images/drink-2.jpg", desc: "Esta es una jugoso zumo de piña", price: 2.90},
+        {id: 3, category: "drink", title: "Soda drink", img:"images/drink-3.jpg", desc: "Esta es una jugosa y fresquita Soda", price: 2.90},
+        {id: 3, category: "burger", title: "burger de carne mecha", img:"images/burger-1.jpg", desc: "Esta es una deliciosa Burger", price: 2.90},
+        {id: 3, category: "burger", title: "burger cheese", img:"images/burger-2.jpg", desc: "Esta es una deliciosa Burger", price: 2.90},
+        {id: 3, category: "burger", title: "burger de pavo", img:"images/burger-3.jpg", desc: "Esta es una deliciosa Burger", price: 2.90},
+        {id: 3, category: "pizza", title: "pizza russian", img:"images/pasta-1.jpg", desc: "Esta es una jugosa y fresquita Limonada", price: 2.90},
+        {id: 3, category: "pizza", title: "pizza hawaiana", img:"images/pasta-3.jpg", desc: "Esta es una jugosa y fresquita Limonada", price: 2.90}
+      
+      ]
+		}
+	},
+	computed:{
+		productsFiltered(){
+			let category = "pizza"
+			return this.products.filter( (item) => item.category === category )
+    },
+  
+	},
+	components: {
+		MainSlider, 
+    ProductItem,
+    
+	}
+}
+</script>

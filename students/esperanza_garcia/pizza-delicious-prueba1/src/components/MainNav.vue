@@ -22,20 +22,17 @@
 	  </button>
 	  <div class="collapse navbar-collapse" id="ftco-nav">
 		<ul class="navbar-nav ml-auto">
-		  <li class="nav-item">
-			<a href="index.html" class="nav-link">Home</a>
+		  <li class="nav-item" v-for="item in menu" :key="item.id">
+			<a :href="item.path" class="nav-link">{{item.name}}</a>
 			 </li>
-		  <li class="nav-item">
-			<a href="pedidos.html" class="nav-link">Pedidos</a>
-		  </li>
-		  <li class="nav-item">
-			<a href="blog.html" class="nav-link">Blog</a>
-		  </li>
-		  <li class="nav-item">
-			<a href="contacto.html" class="nav-link">Contacto</a>
-		  </li>
 		</ul>
 	  </div>
 	</div>
   	</nav>
 </template>
+
+<script>
+export default {
+	props: ["menu"]
+}
+</script>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>El MercaDAW</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h1>My shopping cart</h1>
+                </div>
+                <div class="col s6">
+                    <label for="">Introduce el Producto
+              <input type="text" v-model="product.name"/>
+            </label>
+                    <label for="">Introduce el Precio
+              <input type="number" min="0" v-model.number="product.price"/>
+            </label>
+                    <label for="">Introduce la url
+              <input type="text" v-model="product.urlImg" />
+            </label>
+                    <label for="">Introduce la descripción
+              <input type="text" v-model="product.description" />
+            </label>
+                    <button @click="addProduct" v-if="isNew" class="waves-effect waves-light btn">Enviar</button>
+                    <button @click="exitEdit" v-else class="waves-effect waves-light btn">Salir de edición</button>
+                </div>
+                <div class="col s6">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Photo</th>
+                                <th>Price</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr v-for="product in products">
+                                <td>{{product.name}}</td>
+                                <td><img :src="product.urlImg" alt="Imagen fruta" width="30%"></td>
+                                <td>{{product.price}}</td>
+                                <td>
+                                    <button @click="editProduct(product)" class="btn green">E</button>
+                                    <button @click="removeProduct(product)" class="btn red">X</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>Total:{{total}}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                isNew: true,
+                product: {
+                    name: "",
+                    price: "",
+                    urlImg: "",
+                    description: "",
+                    id: null
+                },
+                products: [{
+                    name: "Producto 1",
+                    price: 5,
+                    urlImg: "",
+                    description: "",
+                    id: 1
+                }, {
+                    name: "Producto 2",
+                    price: 4,
+                    urlImg: "",
+                    description: "",
+                    id: 2
+                }, ]
+            },
+            computed: {
+                total() {
+                    let total = 0;
+                    if (this.products.length) {
+                        let productsPrice = this.products.map((product) => product.price)
+                        total = productsPrice.reduce((sum, price) => sum + price)
+                    }
+                    return total
+                }
+            },
+            methods: {
+                saveProduct() {
+                    if (this.isNew) {
+                        this.product.id = new Date().getTime()
+                        this.product.urlImg = "https://cdn.icon-icons.com/icons2/1166/PNG/512/1488897564-pear_81763.png";
+                        
+                        let myProduct  = {... this.product}
+                        this.products.push(myProduct)
+                        this.clearProduct()
+                    }
+                },
+                addProduct() {
+                    this.isNew = true
+                    this.saveProduct(this.pro)
+                },
+                editProduct(product) {
+                    this.isNew = false
+                    this.product = product
+                },
+                removeProduct(product) {
+                    let index = this.products.findIndex((item) => item.id === product.id)
+                    this.products.splice(index, 1)
+                },
+                exitEdit() {
+                    this.isNew = true
+                    this.product = { ...this.product }
+                    this.clearProduct();
+                },
+                clearProduct() {
+                    this.product.name = ""
+                    this.product.price = ""
+                    this.product.urlImg = ""
+                    this.product.description = ""
+                    this.product.id = ""
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>

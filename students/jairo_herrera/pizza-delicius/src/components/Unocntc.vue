@@ -1,6 +1,32 @@
 <template>
   <div>
-    <section class="ftco-section contact-section">
+    <ContactPage />
+
+    <li>
+            <router-link to="/ContactPage">Contacto</router-link>
+
+    </li>
+<section class="home-slider owl-carousel img">
+    <div class="slider-item" style="background-image: url(images/bg_3.jpg);">
+      <div class="overlay"></div>
+      <div class="container">
+        <div
+          class="row slider-text justify-content-center align-items-center"
+          data-scrollax-parent="true"
+        >
+          <div class="col-md-7 col-sm-12 text-center ">
+            <h1 class="mb-4">Contact us</h1>
+            <p class="mb-4 mb-md-5">
+              Give us some delicious feedback
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<section class="ftco-section contact-section">
     <div class="container mt-5">
       <div class="row block-9">
         <div class="col-md-4 contact-info ">
@@ -51,5 +77,15 @@
       </div>
     </div>
   </section>
+
   </div>
+
 </template>
+<script>
+import ContactPage from '@/pages/ContactPage'
+
+
+export default {
+  ContactPage,
+}
+</script>

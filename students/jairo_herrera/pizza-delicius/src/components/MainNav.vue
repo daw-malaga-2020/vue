@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <nav
+	<nav
 	class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 	id="ftco-navbar"
   >
@@ -19,25 +18,21 @@
 		aria-expanded="false"
 		aria-label="Toggle navigation"
 	  >
-		<span class="oi oi-menu"></span> Menu
+		<span class="oi oi-menu"></span> Pedidos
 	  </button>
 	  <div class="collapse navbar-collapse" id="ftco-nav">
 		<ul class="navbar-nav ml-auto">
-		  <li class="nav-item">
-			<a href="index.html" class="nav-link">Home</a>
-			 </li>
-		  <li class="nav-item">
-			<a href="pedidos.html" class="nav-link">Pedidos</a>
-		  </li>
-		  <li class="nav-item">
-			<a href="blog.html" class="nav-link">Blog</a>
-		  </li>
-		  <li class="nav-item">
-			<a href="contacto.html" class="nav-link">Contacto</a>
-		  </li>
+			<li>
+				<router-link :to="'/HomePage'">Home</router-link>
+				<router-link :to="'/OrderPage'">Pedidos</router-link>
+				<router-link :to="'/BlogPage'">Blog</router-link>
+				<router-link :to="'/ConctactPage'">Contacto</router-link>
+	</li>
 		</ul>
 	  </div>
 	</div>
-  	</nav>
-  </div>
+  	</nav>  
 </template>
+
+<script>
+</script>

@@ -1,26 +1,29 @@
 <template>
 <div>
-  <MainNav></MainNav>
-  <MainSlider></MainSlider>
+  
+  <MainSlider mainTitleSlider="blog" :descriptionSlider="descriptionSlider"></MainSlider>
   <MainBlog></MainBlog>
-  <MainFooter/>
 </div>
 </template>
 
 <script>
 
-import MainNav from '../components/MainNav'
+
 import MainSlider from '../components/MainSlider'
 import MainBlog from '../components/MainBlog'
-import MainFooter from '../components/MainFooter'
+
 
 export default {
   name:"Blog",
+  data(){
+    return{
+      descriptionSlider: "Read our delicious histories"
+    }
+  },
   components: {
-    MainNav,
     MainSlider,
-    MainBlog,
-    MainFooter
+    MainBlog
   }
 }
 </script>
+

@@ -1,30 +1,21 @@
-
 <template>
   <div id="app">
-    <home></home>
-    <!-- <pedidos></pedidos> --> 
-    <!-- <blog></blog>  -->
-    <!-- <contacto></contacto> -->
+        <MainNav></MainNav>
+        <router-view></router-view>
+        <MainFooter></MainFooter>
   </div>
 </template>
 
 <script>
-import Home from './pages/Home' 
-/* import Pedidos from './pages/Pedidos' */
-/* import Blog from './pages/Blog' */
-/* import Contacto from './pages/Contacto' */
+
+import MainNav from '@/components/MainNav'
+import MainFooter from '@/components/MainFooter'
 
 export default {
   name: 'App',
   components: {
-    Home 
-    /* Pedidos */ 
-    /* Blog */
-    /* Contacto */
+    MainNav,
+    MainFooter
   }
 }
 </script>
-
-<style lang="scss">
-
-</style>

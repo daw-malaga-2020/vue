@@ -4,16 +4,15 @@
 				<a
 				  href="#"
 				  class="img"
-				  style="background-image: url(images/pizza-1.jpg);"
+				  :style='"background-image: url("+ img +");"'
 				></a>
 				<div class="text p-4">
-				  <h3>Italian Pizza</h3>
+				  <h3>{{name}}</h3>
 				  <p>
-					Far far away, behind the word mountains, far from the countries
-					Vokalia and Consonantia
+					{{description}}
 				  </p>
 				  <p class="price">
-					<span>$2.90</span>
+					<span>{{price}}</span>
 					<a href="#" class="ml-2 btn btn-white btn-outline-white"
 					  >Order</a
 					>
@@ -22,3 +21,8 @@
 			  </div>
 			</div>
 </template>
+<script>
+export default {
+	props:["name","img","description","price"	]
+}
+</script>
