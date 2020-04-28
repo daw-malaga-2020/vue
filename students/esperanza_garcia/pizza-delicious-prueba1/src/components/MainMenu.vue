@@ -66,7 +66,7 @@
                       role="tablist"
                       aria-orientation="vertical">
                   
-                    <a class="nav-link" data-toggle="pill" role="tab" v-for="item in menu" :key="item.id" :href="item.href" :ariaControls="item.ariaControls" :ariaSelected="item.ariaSelected" @click="category=item.category" :item="item">{{item.name}}</a>
+                    <a class="nav-link" data-toggle="pill" role="tab" href="#" v-for="item in menu" :key="item.id" @click="category=item.category" :item="item">{{item.name}}</a>
                     
                     </div>
                   </div>
@@ -164,10 +164,10 @@ export default {
 
       ],
        menu:[
-        {id:"v-pills-1-tab", href: "#v-pills-1", ariaControls:"v-pills-1", ariaSelected:"true", name:"Pizza" , category:"pizza"},
-        {id:"v-pills-2-tab", href: "#v-pills-2", ariaControls:"v-pills-2", ariaSelected:"true", name:"Drinks", category:"drinks"},
-        {id:"v-pills-3-tab", href: "#v-pills-3", ariaControls:"v-pills-3", ariaSelected:"true", name:"Burgers", category:"burgers"},
-        {id:"v-pills-4-tab", href: "#v-pills-4", ariaControls:"v-pills-4", ariaSelected:"false", name:"Pasta", category:"pasta"}
+        {id:"v-pills-1-tab",  name:"Pizza" , category:"pizza"},
+        {id:"v-pills-2-tab",  name:"Drinks", category:"drinks"},
+        {id:"v-pills-3-tab", name:"Burgers", category:"burgers"},
+        {id:"v-pills-4-tab", name:"Pasta", category:"pasta"}
       ]
     }
   },
