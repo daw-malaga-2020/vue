@@ -17,6 +17,10 @@ Vue.config.productionTip = false
 
 Vue.use(VueRouter)
 
+Vue.filter('toMoney', function(value) {
+    return new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR" }).format(value)
+})
+
 new Vue({
     router,
     render: h => h(App),
