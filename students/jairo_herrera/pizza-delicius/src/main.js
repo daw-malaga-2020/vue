@@ -4,16 +4,11 @@ import VueRouter from 'vue-router'
 
 
 import HomePage from '@/pages/HomePage'
-import ContactPage from '@/pages/ContactPage'
 import OrderPage from '@/pages/OrderPage'
-import BlogPage from '@/pages/BlogPage'
 
 const routes = [
-    { path: "/", name: "HomePage", component: HomePage },
-    { path: "/HomePage", name: "HomePage", component: HomePage },
-    { path: "/OrderPage", name: "OrderPage", component: OrderPage },
-    { path: "/ContactPage", name: "ContactPage", component: ContactPage },
-    { path: "/BlogPage", name: "BlogPage", component: BlogPage },
+    { path: "/", name: "home", component: HomePage },
+    { path: "/pedidos", name: "order", component: OrderPage }
 ]
 
 const router = new VueRouter({ routes, mode: "history" })
@@ -21,6 +16,10 @@ const router = new VueRouter({ routes, mode: "history" })
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)
+
+Vue.filter('toMoney', function(value) {
+    return new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR" }).format(value)
+})
 
 new Vue({
     router,
