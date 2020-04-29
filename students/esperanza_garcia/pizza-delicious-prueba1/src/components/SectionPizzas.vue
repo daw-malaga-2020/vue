@@ -47,7 +47,6 @@
 
 <script>
 
-import TitleSection from '../partials/TitleSection'
 import PizzaItem from '../partials/PizzaItem'
 import PizzasOfMenu	from '../partials/PizzasOfMenu'
 
@@ -78,7 +77,6 @@ export default {
 		}
 	},	
 	components: {
-		TitleSection,
 		PizzaItem,
 		PizzasOfMenu
 	}
