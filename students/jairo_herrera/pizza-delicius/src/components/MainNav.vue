@@ -18,16 +18,13 @@
 		aria-expanded="false"
 		aria-label="Toggle navigation"
 	  >
-		<span class="oi oi-menu"></span> Pedidos
+		<span class="oi oi-menu"></span> Menu
 	  </button>
 	  <div class="collapse navbar-collapse" id="ftco-nav">
 		<ul class="navbar-nav ml-auto">
-			<li>
-				<router-link :to="'/HomePage'">Home</router-link>
-				<router-link :to="'/OrderPage'">Pedidos</router-link>
-				<router-link :to="'/BlogPage'">Blog</router-link>
-				<router-link :to="'/ConctactPage'">Contacto</router-link>
-	</li>
+		  <li class="nav-item" v-for="item in menu" :key="item.id">
+			<a :href="item.path" class="nav-link">{{item.name}}</a>
+			</li>
 		</ul>
 	  </div>
 	</div>
@@ -35,4 +32,7 @@
 </template>
 
 <script>
+export default {
+	props: ["menu"]
+}
 </script>

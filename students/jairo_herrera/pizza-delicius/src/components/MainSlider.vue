@@ -1,7 +1,5 @@
 <template>
-  <div>
-
-    <section class="home-slider owl-carousel img">
+<section class="home-slider owl-carousel img">
 		<div class="slider-item" style="background-image: url(images/bg_3.jpg);">
 		  <div class="overlay"></div>
 		  <div class="container">
@@ -26,6 +24,4 @@
 		  </div>
 		</div>
 	  </section>
-
-  </div>
 </template>

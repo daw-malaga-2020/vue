@@ -1,28 +1,33 @@
 <template>
   <div id="app">
 
-    <MainNav />
+    <MainNav :menu="menu" />
 
     <router-view></router-view>
 
-    <FooterUno />
+    <MainFooter />
 
   </div>
 </template>
 
 <script>
 import MainNav from "@/components/MainNav"
-import FooterUno from "@/components/FooterUno"
+import MainFooter from "@/components/MainFooter"
 export default {
   name: "App",
   data(){
     return {
-     
+      menu: [
+        {id: 1, path: "/", name: "Home"},
+        {id: 2, path: "/pedidos", name: "Pedidos"},
+        {id: 3, path: "/blog", name: "Blog"},
+        {id: 4, path: "/contacto", name: "Contacto"},
+      ]
     }
   },
   components: {
     MainNav, 
-    FooterUno,
+    MainFooter
   }
 };
 </script>
