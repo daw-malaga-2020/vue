@@ -1,0 +1,33 @@
+<script>
+    let locationSelector = document.getElementById('selector');
+    locationSelector.addEventListener("change", changeLocation)
+    let description = document.querySelector('.heading');
+    let city = document.querySelector('.location');
+    let temp = document.querySelector('.temp-value');
+    let hum = document.querySelector('.humidity');
+    let wind = document.querySelector('.wind-speed');
+
+
+    async function getAPI(location) {
+        let url = `http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=3408896f1d019f9845f9f0726d4dab41&lang=es&units=metric`;
+
+        let request = await fetch(url);
+        let dataWeather = await request.json();
+
+        printHTML(dataWeather);
+    }
+
+    function printHTML(dataWeather) {
+        city.innerHTML = dataWeather.name;
+        description.innerHTML = `${dataWeather.weather[0].description}`;
+        temp.innerHTML = `${Math.round(dataWeather.main.temp)}`;
+        hum.innerHTML = `${dataWeather.main.humidity}`;
+        wind.innerHTML = `${dataWeather.wind.speed}`;
+    }
+
+    function changeLocation(e) {
+        getAPI(e.target.value);
+    }
+
+    getAPI(locationSelector.value);
+</script>
