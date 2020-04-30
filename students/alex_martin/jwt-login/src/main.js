@@ -6,6 +6,7 @@ import VueAxios from 'vue-axios'
 Vue.config.productionTip = false
 
 axios.defaults.baseURL = "https://pizza-delicious-api.herokuapp.com/";
+// axios.defaults.baseURL = "http://localhost:8000";
 
 Vue.use(VueAxios, axios)
 
