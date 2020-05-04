@@ -1,7 +1,5 @@
 <template>
-  <div>
-
-    <section class="ftco-intro">
+	  <section class="ftco-intro">
 		<div class="container-wrap">
 		  <div class="wrap d-md-flex">
 			<div class="info">
@@ -45,5 +43,4 @@
 		  </div>
 		</div>
 	  </section>
-  </div>
 </template>

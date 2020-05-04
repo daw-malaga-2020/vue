@@ -12,7 +12,7 @@
 			{{ desc }}
 			</p>
 			<p class="price">
-			<span>{{price}}</span>
+			<span>{{price | toMoney }}</span>
 			<a href="#" class="ml-2 btn btn-white btn-outline-white"
 				>Order</a
 			>

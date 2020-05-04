@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <section class="ftco-section ftco-services">
+  <section class="ftco-section ftco-services">
 		<div class="overlay"></div>
 		<div class="container">
 		  <div class="row justify-content-center mb-5 pb-3">
@@ -64,5 +63,4 @@
 		  </div>
 		</div>
 	  </section>
-  </div>
 </template>
