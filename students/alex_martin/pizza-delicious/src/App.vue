@@ -26,12 +26,17 @@ export default {
         {id: 2, path: "/pedidos", name: "Pedidos"},
         {id: 3, path: "/blog", name: "Blog"},
         {id: 4, path: "/contacto", name: "Contacto"},
+        {id: 5, path: "/myorders", name: "My Orders"}, 
       ]
     }
   },
   components: {
     MainNav, 
     MainFooter
+  },
+  async mounted(){
+    this.$store.commit("checkToken")
+    this.$store.dispatch('loadProducts')
   }
 };
 </script>

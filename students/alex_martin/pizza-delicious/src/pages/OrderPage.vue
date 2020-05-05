@@ -1,13 +1,22 @@
 <template>
 	<div>
 
-		<MainSlider />
+		<MainSlider
+        subheading="Our products" 
+        image="/images/bg_3.jpg"
+        size="small"
+     />
 
     <!-- MenuList -->
     <MenuList  :categories="categories" :products="productsFiltered" :current="currentCategory" @change="changeCurrentCategory" @add="addToCart"/>
     <!-- OrderList -->
-    <OrderList :order = "listOrder" :total="totalPrice"  @decrease="decreaseQuantity" @increase="increaseQuantity" @remove="removeItem"></OrderList>
-    
+    <OrderList  :order = "listOrder" 
+                :total="totalPrice"  
+                @decrease="decreaseQuantity" 
+                @increase="increaseQuantity" 
+                @remove="removeItem"
+                @process="processOrder">
+    </OrderList>
     
   </div>
 </template>
@@ -19,7 +28,6 @@ import OrderList from "@/components/OrderList"
 export default {
   data() {
     return {
-      listOrder: [],
       currentCategory: "pizza",
       categories: [
         { title: "Pizza", id: 1, slug: "pizza" },
@@ -32,6 +40,10 @@ export default {
   computed: {
     products(){
       return this.$store.state.products
+    },
+    
+    listOrder(){
+      return this.$store.state.listOrder
     },
     productsFiltered() {
       return this.products.filter(
@@ -49,36 +61,41 @@ export default {
     }
   },
   methods: {
+    async processOrder(userInfo){
+        let orderData = {
+          id: (new Date()).getTime(),
+          total: this.totalPrice,
+          products: this.listOrder,
+          user: userInfo,
+          status: 1,
+          created_at: (new Date()).getTime(),
+          delivery_at: null
+        }
+        let config = {
+          headers: {
+              'Authorization': `Bearer ${window.localStorage.getItem("token")}`
+          }
+        }
+        let response = await this.$http.post("orders", orderData, config)
+        this.$store.commit("emptyCart")
+        this.$swal("Your order was sent")
+          this.$router.push("/myorders")
+    },
     changeCurrentCategory(slug) {
       this.currentCategory = slug;
     },
     addToCart(item) {
-      let found = this.listOrder.filter(order => order.id === item.id);
-
-      if (found.length != 0) {
-        found[0].quantity++;
-      } else {
-        let order = {
-          id: item.id,
-          title: item.title,
-          unitPrice: item.price,
-          quantity: 1
-        };
-        this.listOrder.push(order);
-      }
+     this.$store.commit("addToCart", item)
     },
     decreaseQuantity(item){
-      item.quantity--
-      if(item.quantity<=0){
-        this.removeItem(item)
-      }
+      this.$store.commit('decreaseQuantity', item)
     },
     increaseQuantity(item){
-      item.quantity++
+      this.$store.commit('increaseQuantity', item)
     },
     removeItem(item){
-      let index= this.listOrder.findIndex((item)=>item.id===item.id)
-      this.listOrder.splice(index, 1)
+      this.$store.commit('removeItem', item)
+      
     }
   },
   components: {

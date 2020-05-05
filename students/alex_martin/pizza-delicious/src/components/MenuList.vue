@@ -17,7 +17,7 @@
                 <div class="col-md-12">
                       <div class="row">
                           <ProductItem v-for="item in products" :key="item.id"
-                          :title="item.title" :img="item.img" :price="item.price" :desc="item.desc" @click="addToCart(item)"/>
+                          :title="item.title" :img="item.image" :price="item.price" :desc="item.desc" @click="addToCart(item)"/>
                       </div>
                     </div>
               </div>

@@ -14,7 +14,7 @@
 			<p class="price">
 			<span>{{price | toMoney }}</span>
 			<a href="#" class="ml-2 btn btn-white btn-outline-white"
-				>Order</a
+			@click.prevent="addOrder">Order</a
 			>
 			</p>
 		</div>
@@ -24,6 +24,11 @@
 
 <script>
 export default {
-	props: ["title", "img", "desc", "price"]
+	props: ["title", "img", "desc", "price"],
+	methods:{
+		addOrder(){
+			this.$emit('add')
+		}
+	}
 }
 </script>

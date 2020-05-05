@@ -1,7 +1,12 @@
 <template>
 
 	<div>
-		<MainSlider />
+		<MainSlider 
+        subheading="Welcome" 
+        heading="WE COOKED YOUR DESIRED PIZZA RECIPE"
+        desc="A small river named Duden flows by their place and supplies it with the necessary regelialia."
+        image="/images/bg_3.jpg"
+    />
 		<MainSeparator />
 		<FeaturePizza :products="products" :count="3" category="pasta" :title="title" :desc="desc" />
 		<OurServices />

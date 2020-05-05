@@ -40,10 +40,46 @@
               <h2>TOTAL</h2>
               <h4>{{total | toMoney}}</h4>
             </div>
-            <a href="#" class="p-3 px-xl-4 py-xl-3 btn-white btn btn-outline-white">Order Now</a>
+            <a href="#" @click.prevent="openProcessForm" class="p-3 px-xl-4 py-xl-3 btn-white btn btn-outline-white">Order Now</a>
           </div>
         </div>
       </div>
+
+        <b-modal id="order-process" title="Order Process" class="bg-dark">
+            <p>Please, complete your address to process the order</p>
+            <form action="#" class="contact-form">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" v-model="userInfo.name" class="form-control" placeholder="Your Name">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" v-model="userInfo.lastname" class="form-control" placeholder="Your surname">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" v-model="userInfo.address" class="form-control" placeholder="Your address">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" v-model="userInfo.phone" class="form-control" placeholder="Your phone">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <template v-slot:modal-footer>
+                <div class="text-right">
+                    <input type="submit" @click.prevent="processOrder" value="Process order" class="btn btn-primary py-3 px-5">
+                </div>
+            </template>
+
+        </b-modal>
+
 
     </section>
 </template>
@@ -53,7 +89,27 @@
 
 export default {
   props: ["order","total"],
+  data(){
+    return {
+      userInfo: {
+        name: "",
+        lastname: "",
+        address: "",
+        phone: ""
+      }
+    }
+  },
   methods: {
+    openProcessForm(){
+        if (!this.$store.state.isAuth){
+          this.$swal('Opps','You need login to process orders', "error");
+        }else{
+          this.$bvModal.show("order-process")
+        }
+    },
+    processOrder(){
+      this.$emit("process", this.userInfo)
+    },
     decreaseQuantity(item){
       this.$emit("decrease", item)
     },
@@ -66,3 +122,9 @@ export default {
   }  
 }
 </script>
+
+<style>
+    .modal-body {
+        background-color: #1d2124;
+    }
+</style>

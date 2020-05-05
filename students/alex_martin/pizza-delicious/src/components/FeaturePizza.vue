@@ -15,9 +15,10 @@
 	
 			<FeaturePizzaItem v-for="item in productsFiltered" :key="item.id" 
 				:title="item.title"
-				:img="item.img"
+				:img="item.image"
 				:desc="item.desc"
 				:price="item.price"
+				@add="addToCart(item)"
 			/>
 
 		  </div>
@@ -32,6 +33,11 @@ import FeaturePizzaItem from '@/partials/FeaturePizzaItem'
 
 export default {
 	props:["products", "count", "category", "title", "desc"],
+	methods:{
+		addToCart(item){
+			this.$store.commit("addToCart", item)
+		}
+	},
 	computed:{
 		productsFiltered(){
 			let products= this.products.filter((item)=>item.category === this.category)
