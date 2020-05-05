@@ -6,8 +6,8 @@
                     <div class="weather-card one">
                         <div class="top">
                             <div class="wrapper">
-                                <input type="text" v-model="city">
-                                <button >Buscar</button>
+                                <input type="text" v-model="cityInput">
+                                <button @click="changeWeather">Buscar</button>
                                 <h1 class="heading">{{weather}}</h1>
 
                                 <p class="temp">
@@ -47,27 +47,34 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   name: 'Weather',
   data(){
       return{
-          city:"malaga",
+          cityInput:"Málaga, es",
           weather:"",
           wind:"",
           temp:"",
           humidity:"",
-          token : "3408896f1d019f9845f9f0726d4dab41",
-          lang : "es",
-          unit : "metric"
       }
   },
+  methods: {
+    async changeWeather(){
+      
+      let token = "3408896f1d019f9845f9f0726d4dab41"
+      let lang = "es"
+      let unit = "metric"
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${this.cityInput}&appid=${token}&lang=${lang}&units=${unit}`
+      
+      let response = await this.axios.get(url)
+      this.weather=response.data.weather[0].description
+      this.temp=  Math.trunc(response.data.main.temp)
+      this.humidity= response.data.main.humidity
+      this.wind= response.data.wind.speed
+    }
+  },
   async mounted(){
-      let response = await this.$http(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${this.token}&lang=${this.lang}&units=${this.unit}`)
-      this.weather=response.weather[0].description.toUpperCase()
-      this.temp=  Math.trunc(response.main.temp)
-      this.humidity= response.main.humidity
-      this.wind= response.wind.speed
+      this.changeWeather()
   }
   
 }
