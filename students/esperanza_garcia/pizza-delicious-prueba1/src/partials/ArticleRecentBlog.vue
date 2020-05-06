@@ -27,6 +27,6 @@
 </template>
 <script>
 export default {
-	props:["resumeBlog","titleBlog","numberOfComments","author","date"]
+	props:["resumeBlog","titleBlog","numberOfComments","author","date","img"]
 }
 </script>

@@ -15,7 +15,7 @@
 			<div class="container-wrap">
 				<div class="row no-gutters d-flex">
 		
-					<PizzaItem v-for=" item in typesOfPizzas" :key="item.id" :name="item.name" :img="item.img" :description="item.description" :price="item.price"></PizzaItem>
+					<PizzaItem v-for=" item in products" :key="item.id" :name="item.title" :img="item.image" :description="item.desc" :price="item.price" @add="addToCart(item)"></PizzaItem>
 
 				</div>
 			</div>
@@ -36,7 +36,7 @@
 					</div>
 				<div class="row">
 					<div class="col-md-6">
-						<PizzasOfMenu v-for="item in menuOfPizzas" :key="item.id" :name="item.name" :img="item.img" :description="item.description" :price="item.price"></PizzasOfMenu>
+						<PizzasOfMenu v-for="item in products" :key="item.id" :name="item.title" :img="item.image" :description="item.desc" :price="item.price"></PizzasOfMenu>
 
 					
 					</div>
@@ -52,30 +52,17 @@ import PizzasOfMenu	from '../partials/PizzasOfMenu'
 
 export default {
 	name: "SectionPizzas",
+	props:["products"],
 	data(){
 		return{
-			typesOfPizzas: [
-				{id:1 ,name: "Pizza italiana", img: "images/pizza-8.jpg", description:"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia", price:10},
-				{id:1 ,name: "Pizza italiana", img: "images/pizza-8.jpg", description:"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia", price:10},
-				{id:1 ,name: "Pizza italiana", img: "images/pizza-8.jpg", description:"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia", price:10},
-				{id:1 ,name: "Pizza italiana", img: "images/pizza-8.jpg", description:"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia", price:10},
-				{id:1 ,name: "Pizza italiana", img: "images/pizza-8.jpg", description:"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia", price:10},
-				{id:1 ,name: "Pizza italiana", img: "images/pizza-8.jpg", description:"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia", price:10}
-				
-
-			],
-			menuOfPizzas:[
-				{id:1 ,name: "Pizza italiana", img: "images/pizza-8.jpg", description:"A small river named Duden flows by their place and supplies", price:10},
-				{id:1 ,name: "Pizza italiana", img: "images/pizza-8.jpg", description:"A small river named Duden flows by their place and supplies", price:10},
-				{id:1 ,name: "Pizza italiana", img: "images/pizza-8.jpg", description:"A small river named Duden flows by their place and supplies", price:10},
-				{id:1 ,name: "Pizza italiana", img: "images/pizza-8.jpg", description:"A small river named Duden flows by their place and supplies", price:10},
-				{id:1 ,name: "Pizza italiana", img: "images/pizza-8.jpg", description:"A small river named Duden flows by their place and supplies", price:10},
-				{id:1 ,name: "Pizza italiana", img: "images/pizza-8.jpg", description:"A small river named Duden flows by their place and supplies", price:10},
-				{id:1 ,name: "Pizza italiana", img: "images/pizza-8.jpg", description:"A small river named Duden flows by their place and supplies", price:10},
-				{id:1 ,name: "Pizza italiana", img: "images/pizza-8.jpg", description:"A small river named Duden flows by their place and supplies", price:10}
-			]
+			
 		}
 	},	
+	methods:{
+		addToCart(item){
+			this.$store.commit("addToCart", item)
+		}
+	},
 	components: {
 		PizzaItem,
 		PizzasOfMenu

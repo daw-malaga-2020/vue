@@ -1,6 +1,6 @@
 <template>
   <section class="home-slider owl-carousel img">
-		<div class="slider-item" style="background-image: url(images/bg_3.jpg);">
+		<div class="slider-item" :style='"background-image: url("+img+");"'>
 		  <div class="overlay"></div>
 		  <div class="container">
 			<div
@@ -23,7 +23,7 @@
 </template>
 <script>
 export default {
-	props:[ "subheadingMainSlider", "mainTitleSlider", "descriptionSlider"
+	props:[ "subheadingMainSlider", "mainTitleSlider", "descriptionSlider", "img"
 	]
 }
 </script>

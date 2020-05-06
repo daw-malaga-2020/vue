@@ -7,13 +7,13 @@
                               :style='"background-image: url("+ img +");"'
                             ></a>
                             <div class="text">
-                              <h3><a href="#">{{name}}</a></h3>
+                              <h3><a href="#">{{title}}</a></h3>
                               <p>
-                                {{description}}
+                                {{desc}}
                               </p>
                               <p class="price"><span>{{price}}</span></p>
                               <p>
-                                <a href="#" class="btn btn-white btn-outline-white" >Add to cart</a
+                                <a href="#" class="btn btn-white btn-outline-white" @click.prevent="addToCart">Add to cart</a
                                 >
                               </p>
                             </div>
@@ -22,6 +22,11 @@
 </template>
 <script>
 export default {
-  props:[ "img", "name", "description", "price" ]
+  props:[ "img", "title", "desc", "price" ],
+  methods:{
+    addToCart(){
+      this.$emit("click")
+    }
+  }
 }
 </script>

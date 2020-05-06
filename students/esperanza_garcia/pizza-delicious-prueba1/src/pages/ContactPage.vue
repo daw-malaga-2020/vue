@@ -1,6 +1,6 @@
 <template>
 <div>
-  <MainSlider :mainTitleSlider="mainTitleSlider" :descriptionSlider="descriptionSlider">
+  <MainSlider :mainTitleSlider="mainTitleSlider" :descriptionSlider="descriptionSlider" :img="img">
   </MainSlider>
   <SectionContact/>
 </div>
@@ -17,6 +17,7 @@ export default {
   name:"Contact",
   data(){
     return{
+      img:"/images/bg_2.jpg",
       mainTitleSlider: "contact us",
       descriptionSlider: "give us some delicious feedback"
     }

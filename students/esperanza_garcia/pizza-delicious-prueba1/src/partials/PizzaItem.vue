@@ -13,7 +13,7 @@
 				  </p>
 				  <p class="price">
 					<span>{{price}}</span>
-					<a href="#" class="ml-2 btn btn-white btn-outline-white"
+					<a href="#" class="ml-2 btn btn-white btn-outline-white" @click.prevent="addToCart"
 					  >Order</a
 					>
 				  </p>
@@ -23,6 +23,11 @@
 </template>
 <script>
 export default {
-	props:["name","img","description","price"	]
+	props:["name","img","description","price"	],
+	methods:{
+		addToCart(){
+			this.$emit("add")
+		}
+	}
 }
 </script>

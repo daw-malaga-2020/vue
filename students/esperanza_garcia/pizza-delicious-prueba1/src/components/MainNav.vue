@@ -4,10 +4,10 @@
 	id="ftco-navbar"
   >
 	<div class="container">
-	  <a class="navbar-brand" href="index.html"
+	  <router-link class="navbar-brand" to="index.html"
 		><span class="flaticon-pizza-1 mr-1"></span>Pizza<br /><small
 		  >Delicious</small
-		></a
+		></router-link
 	  >
 	  <button
 		class="navbar-toggler"
@@ -23,7 +23,9 @@
 	  <div class="collapse navbar-collapse" id="ftco-nav">
 		<ul class="navbar-nav ml-auto">
 		  <li class="nav-item" v-for="item in menu" :key="item.id">
-			<a :href="item.path" class="nav-link">{{item.name}}</a>
+			<router-link :to="item.to" class="nav-link">{{item.name}}
+				<span v-if="item.id ===2 && listOrderCount !== 0"  class="badge badge-warning badge-pill">{{listOrderCount}} </span>
+			</router-link>
 			 </li>
 		</ul>
 	  </div>
@@ -33,6 +35,11 @@
 
 <script>
 export default {
-	props: ["menu"]
+	props: ["menu"],
+	computed:{
+		listOrderCount(){
+			return this.$store.getters.listOrderCount
+		}
+	}
 }
 </script>

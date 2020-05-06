@@ -1,8 +1,11 @@
 <template>
   <div id="app">
     <MainNav :menu="menu"></MainNav>
+
     <router-view></router-view>
+
     <MainFooter></MainFooter>
+    
   </div>
 </template>
 
@@ -16,12 +19,16 @@ export default {
   data(){
     return{
       menu: [
-        {id:1, path: "/", name: "Home"},
-        {id:2, path: "/contacto", name: "Contacto"},
-        {id:3, path: "/blog", name: "Blog"},
-        {id:4, path: "/pedidos", name: "Pedidos"}
+        {id:1, to: "/", name: "Home"},
+        {id:2, to: "/contacto", name: "Contacto"},
+        {id:3, to: "/blog", name: "Blog"},
+        {id:4, to: "/pedidos", name: "Pedidos"},
+        {id:5, to: "/mispedidos", name: "Mis Pedidos"}
       ]
     }
+  },
+  async mounted(){
+    this.$store.dispatch('loadProducts')
   },
   components: {
     MainNav,
@@ -33,3 +40,5 @@ export default {
 <style lang="scss">
 
 </style>
+
+
