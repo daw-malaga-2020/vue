@@ -1,30 +1,38 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import App from "./App.vue";
 
-import Home from '@/pages/Home'
-import Pedidos from '@/pages/Pedidos'
-import Blog from '@/pages/Blog'
-import Contacto from '@/pages/Contacto'
+import axios from "axios";
+import VueAxios from "vue-axios";
 
-import App from './App.vue'
+import VueMoment from "vue-moment";
+import moment from "moment/moment";
+import "moment/locale/es";
 
-Vue.config.productionTip = false
+import { BootstrapVue } from "bootstrap-vue";
+import VueSweetalert2 from "vue-sweetalert2";
 
-const routes = [
-    { path: "/", name: "home", component: Home },
-    { path: "/index.html", redirect: "/" },
-    { path: "/pedidos.html", name: "pedidos", component: Pedidos },
-    { path: "/blog.html", name: "blog", component: Blog },
-    { path: "/contacto.html", name: "contacto", component: Contacto }
-]
+import {router} from "@/router"
+import {store} from "@/store"
 
-const router = new VueRouter({
-    routes,
-    mode: "history"
-})
-Vue.use(VueRouter)
+Vue.config.productionTip = false;
+
+axios.defaults.baseURL = "https://pizza-delicious-api.herokuapp.com/";
+
+Vue.use(VueMoment, { moment });
+Vue.use(VueAxios, axios);
+
+Vue.use(BootstrapVue);
+Vue.use(VueSweetalert2);
+
+Vue.filter("toMoney", function(value) {
+  return new Intl.NumberFormat("es-ES", {
+    style: "currency",
+    currency: "EUR",
+  }).format(value);
+});
 
 new Vue({
-    router,
-    render: h => h(App),
-}).$mount('#app')
+  router,
+  store,
+  render: (h) => h(App),
+}).$mount("#app");
