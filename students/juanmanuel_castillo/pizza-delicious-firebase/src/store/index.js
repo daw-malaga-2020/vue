@@ -8,7 +8,6 @@ export const store = new Vuex.Store({
   state: {
     products: [],
     listOrder: [],
-    token: "",
     isAuth: false,
     userLogged: {
       id: null,
@@ -51,22 +50,20 @@ export const store = new Vuex.Store({
       let index = state.listOrder.findIndex((item) => item.id === item.id);
       state.listOrder.splice(index, 1);
     },
-    setToken(state, token) {
-      state.token = token;
-      state.isAuth = true;
+    setCurrentUser(state, userInfo) {
+      state.isAuth = (userInfo !== null);
 
-      window.localStorage.setItem("token", token);
+      if (userInfo) {
+        state.userLogged = userInfo
+        state.userLogged.firstname = 'Juan Manuel Castillo';
+        state.userLogged.profile = userInfo.profile || "user";
+      }
 
-      let userInfo = jwtDecode(token);
-      state.userLogged.id = userInfo.id;
-      state.userLogged.firstname = userInfo.firstname;
-      state.userLogged.profile = userInfo.profile || "user";
-    },
-    logout(state) {
-      state.token = "";
-      state.isAuth = false;
+      if (!userInfo) {
+        state.userLogged = null
+      }
 
-      window.localStorage.removeItem("token");
+      console.info(state.userLogged)
     },
     checkToken(state) {
       let token = window.localStorage.getItem("token");

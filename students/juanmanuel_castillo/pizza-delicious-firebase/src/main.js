@@ -11,8 +11,10 @@ import "moment/locale/es";
 import { BootstrapVue } from "bootstrap-vue";
 import VueSweetalert2 from "vue-sweetalert2";
 
-import {router} from "@/router"
-import {store} from "@/store"
+import { router } from "@/router"
+import { store } from "@/store"
+
+import "@/modules/firebase"
 
 Vue.config.productionTip = false;
 
@@ -24,7 +26,7 @@ Vue.use(VueAxios, axios);
 Vue.use(BootstrapVue);
 Vue.use(VueSweetalert2);
 
-Vue.filter("toMoney", function(value) {
+Vue.filter("toMoney", function (value) {
   return new Intl.NumberFormat("es-ES", {
     style: "currency",
     currency: "EUR",
