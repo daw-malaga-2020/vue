@@ -1,6 +1,8 @@
 import Vue from "vue";
 import App from "./App.vue";
 
+import VueFirestore from 'vue-firestore'
+
 import axios from "axios";
 import VueAxios from "vue-axios";
 
@@ -25,6 +27,7 @@ Vue.use(VueAxios, axios);
 
 Vue.use(BootstrapVue);
 Vue.use(VueSweetalert2);
+Vue.use(VueFirestore)
 
 Vue.filter("toMoney", function (value) {
   return new Intl.NumberFormat("es-ES", {

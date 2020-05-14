@@ -74,7 +74,7 @@ const routes = [
 export const router = new VueRouter({ routes, mode: "history" });
 
 router.beforeEach((to, from, next) => {
-  store.commit("checkToken");
+  
   if (to.meta.isPrivate && !store.state.isAuth) {
     next("login");
   } else {

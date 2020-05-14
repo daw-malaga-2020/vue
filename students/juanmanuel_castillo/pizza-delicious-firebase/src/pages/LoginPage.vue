@@ -46,19 +46,21 @@
 <script>
 import MainSlider from "@/components/MainSlider";
 import { Auth } from "@/modules/firebase";
+import { UsersRef } from "@/modules/firebase";
 
 export default {
   name: "Login",
   data() {
     return {
-      email: "",
-      password: ""
+      email: "juanmanuel@flashexperience.net",
+      password: "testing"
     };
   },
   methods: {
     async login() {
       Auth.signInWithEmailAndPassword(this.email, this.password)
-        .then(user => {
+        .then(response => {
+          console.info(response.user.uid)
           //lo hacemos mejor en el listerner de cambio de estado que provee Firebase
           //this.$store.commit('setCurrentUser', user)
 

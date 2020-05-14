@@ -8,7 +8,7 @@
         image="/images/bg_3.jpg"
     />
 		<MainSeparator />
-		<FeaturePizza :products="products" :count="3" category="pasta" :title="title" :desc="desc" />
+		<FeaturePizza :products="products" :count="3" category="pizza" :title="title" :desc="desc" />
 		<OurServices />
 		<FeatureBlog />
 	</div>

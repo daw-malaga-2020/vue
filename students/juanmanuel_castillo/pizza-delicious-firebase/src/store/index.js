@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import jwtDecode from "jwt-decode";
+import { ProductsRef } from "@/modules/firebase";
 
 Vue.use(Vuex);
 
@@ -12,6 +12,7 @@ export const store = new Vuex.Store({
     userLogged: {
       id: null,
       firstname: null,
+      lastname: null,
       profile: "",
     },
   },
@@ -55,8 +56,6 @@ export const store = new Vuex.Store({
 
       if (userInfo) {
         state.userLogged = userInfo
-        state.userLogged.firstname = 'Juan Manuel Castillo';
-        state.userLogged.profile = userInfo.profile || "user";
       }
 
       if (!userInfo) {
@@ -64,18 +63,15 @@ export const store = new Vuex.Store({
       }
 
       console.info(state.userLogged)
-    },
-    checkToken(state) {
-      let token = window.localStorage.getItem("token");
-      if (token) {
-        this.commit("setToken", token);
-      }
-    },
+    }
   },
   actions: {
     async loadProducts(context) {
-      let response = await Vue.axios.get("products");
-      context.commit("addProducts", response.data);
+      //let response = await Vue.axios.get("products");
+      let response = await ProductsRef.get()
+      let products = response.docs
+
+      context.commit("addProducts", products);
     },
   },
   getters: {

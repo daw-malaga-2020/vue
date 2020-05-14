@@ -24,17 +24,19 @@
 import MainSlider from "@/components/MainSlider";
 import MenuList from "@/components/MenuList"
 import OrderList from "@/components/OrderList"
+import {Db} from "@/modules/firebase"
 
 export default {
   data() {
     return {
       currentCategory: "pizza",
-      categories: [
-        { title: "Pizza", id: 1, slug: "pizza" },
+      categories: [],
+      /*
+      { title: "Pizza", id: 1, slug: "pizza" },
         { title: "Pasta", id: 2, slug: "pasta" },
         { title: "Burgers", id: 3, slug: "burgers" },
         { title: "Drinks", id: 4, slug: "drink" }
-      ],
+      */
     };
   },
   computed: {
@@ -102,6 +104,11 @@ export default {
     MainSlider,
     MenuList,
     OrderList
-  }
+  },
+  firestore() {
+    return {
+        categories: Db.collection('categories').orderBy('title')
+    }
+}
 };
 </script>

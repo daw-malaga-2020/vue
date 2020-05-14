@@ -9,7 +9,25 @@
                 <h3>Register</h3>
                 <p>Please fill this form to create an account.</p>
               </div>
-              <div class="col-md-12">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input
+                    v-model="firstname"
+                    type="text"
+                    class="form-control"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    v-model="lastname"
+                    type="text"
+                    class="form-control"
+                    placeholder="Your surname"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
                 <div class="form-group">
                   <input v-model="email" type="email" class="form-control" placeholder="Your email" />
                 </div>
@@ -39,11 +57,14 @@
 </template>
 <script>
 import { Auth } from "@/modules/firebase";
+import { UsersRef } from "@/modules/firebase";
 
 export default {
   name: "RegisterPage",
   data() {
     return {
+      firstname: "",
+      lastname: "",
       email: "",
       password: ""
     };
@@ -52,14 +73,24 @@ export default {
   methods: {
     register() {
       Auth.createUserWithEmailAndPassword(this.email, this.password)
-        .then(user => {
-          //enviar a página destino
-          //el usuario ya estará identificado (guardar si corresponde en el store)
-            this.$router.push('/')
+        .then(response => {
+
+          UsersRef.doc(response.user.uid).set({
+            firstname: this.firstname,
+            lastname: this.lastname,
+            profile: "user"
+          })
+            .then(() => {
+              this.$router.push("/");
+            })
+            .catch((error) => {
+              alert(error.message)
+            });
+
         })
         .catch(error => {
           //muestra error
-            alert(error.message)
+          alert(error.message);
         });
     }
   }

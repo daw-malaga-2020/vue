@@ -35,7 +35,6 @@ export default {
     MainFooter
   },
   async mounted(){
-    this.$store.commit("checkToken")
     this.$store.dispatch('loadProducts')
   }
 };

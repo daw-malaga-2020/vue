@@ -15,15 +15,28 @@ const firebaseConfig = {
 const firebaseApp = Firebase.initializeApp(firebaseConfig);
 
 export const Db = firebaseApp.firestore() //base de datos firestore
+export const ProductsRef = Db.collection('products') //base de datos firestore
+export const UsersRef = Db.collection('users') //base de datos firestore
+export const ContactsRef = Db.collection('contacts') //base de datos firestore
 export const Storage = firebaseApp.storage() //almacenamiento de ficheros
 export const Auth = firebaseApp.auth() //autenticación
 
-Auth.onAuthStateChanged((user) => {
+Auth.onAuthStateChanged(async (user) => {
+
+  if(user){
+    //con user = null aquí no entra (no hay sesión activa o se acaba de cerrar
+    
+    let userData = await (await UsersRef.doc(user.uid).get())
+    userData = userData.data()
+
+    //la información del usuario autenticado (user)
+    user.firstname = userData.firstname
+    user.lastname = userData.lastname
+    user.profile = userData.profile
+    
+  }
 
   store.commit('setCurrentUser', user)
-
-  console.info('Cambia sesión de usuario en Firebase')
-  console.info(user)
 
   if (!user) {
     //enviamos a la página principal
