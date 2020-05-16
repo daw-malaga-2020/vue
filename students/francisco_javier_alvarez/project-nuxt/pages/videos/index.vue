@@ -9,18 +9,33 @@
         Mi primer proyecto con Nuxt
       </h2>
       <h2 class="subtitle">
-        Proyecto con vídeo
+        Reproductor de videos de youtube, para reproducir cualquier vídeo introduzca el id a continuación.
       </h2>
+      <div class="form-group">
+        <input type="text" class="form-control" v-model="videoId" placeholder="Introduzca el id del video.">
+        <button @click="getVideoId" type="submit" class="btn btn-primary mt-2">Enviar</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
+import Router from 'vue-router'
 
 export default {
   components: {
     Logo
+  },
+  asyncData({params}){
+      return {
+          videoId: ""
+      }
+  },
+  methods: {
+    getVideoId(){
+      this.$router.push({ path: `/videos/${this.videoId}` }) 
+    }
   }
 }
 </script>

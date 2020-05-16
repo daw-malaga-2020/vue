@@ -13,7 +13,12 @@
           class="button--green"
         >
           Productos
-        </nuxt-link a>
+        </nuxt-link>
+        <nuxt-link to="/videos"
+          class="button--green"
+        >
+          Videos
+        </nuxt-link>
         <nuxt-link to="/contact"
           class="button--green"
         >
@@ -49,6 +54,8 @@ export default {
 
 <style>
 .container {
+  position: relative;
+  z-index: 1;
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
@@ -80,8 +87,9 @@ export default {
 }
 
 .vue-notification {
-  position: float;
-  padding: 10px;
+  position: absolute;
+  z-index: 10;
+  padding: 15px;
   margin: 0 5px 5px;
   font-size: 12px;
   color: #ffffff;
