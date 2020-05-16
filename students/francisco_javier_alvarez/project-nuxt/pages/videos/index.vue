@@ -5,15 +5,12 @@
       <h1 class="title">
         Proyecto con Nuxt
       </h1>
-      <h2 class="subtitle">
-        Mi primer proyecto con Nuxt
-      </h2>
-      <h2 class="subtitle">
+      <h2 class="subtitle ">
         Reproductor de videos de youtube, para reproducir cualquier vídeo introduzca el id a continuación.
       </h2>
       <div class="form-group">
         <input type="text" class="form-control" v-model="videoId" placeholder="Introduzca el id del video.">
-        <button @click="getVideoId" type="submit" class="btn btn-primary mt-2">Enviar</button>
+        <button @click="getVideoId" type="submit" class="btn btn-primary mt-2">Reproducir</button>
       </div>
     </div>
   </div>

@@ -3,10 +3,10 @@
     <div>
       <nuxt-link to="/"><logo /></nuxt-link>
       <h1 class="title">
-        Visualización de Youtube
+        Proyecto con Nuxt
       </h1>
       <h2 class="subtitle">
-        Aquí puedes reproducir cualquier video de Youtube introduciendo el ID del video en la URL.
+        Mi primer proyecto con Nuxt
       </h2>
       <youtube :video-id="videoId"></youtube>
     </div>
@@ -15,6 +15,7 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+import Vue from 'vue'
 
 
 export default {
@@ -25,6 +26,13 @@ asyncData({params}){
   },
   components: {
     Logo
+  },
+   mounted() {
+    Vue.notify({
+      group: 'alert',
+      title: 'Notificación',
+      text: 'Puedes salir pulsando en el logo.'
+    })
   }
 }
 </script>
