@@ -1,0 +1,127 @@
+ <template>
+  <div>
+    <section class="ftco-section">
+		<div class="container">
+		  <div class="row justify-content-center mb-5 pb-3">
+			<div class="col-md-7 heading-section  text-center">
+			  <h2 class="mb-4">Recent from blog</h2>
+			  <p>
+				Far far away, behind the word mountains, far from the countries
+				Vokalia and Consonantia, there live the blind texts.
+			  </p>
+			</div>
+		  </div>
+		  <div class="row d-flex">
+
+				<BlogArticle v-for="article in BlogArticle" :key="article.id"
+					:img="article.img" 
+					:date="article.date"
+					:admin="article.admin"
+					:coments="article.coments"
+					:title="article.title"
+					:resumen="article.resumen"
+				></BlogArticle>
+
+		<!-- 	<div class="col-md-4 d-flex ">
+			  <div class="blog-entry align-self-stretch">
+				<a
+				  href="blog-single.html"
+				  class="block-20"
+				  style="background-image: url('images/image_1.jpg');"
+				>
+				</a>
+				<div class="text py-4 d-block">
+				  <div class="meta">
+					<div><a href="#">Sept 10, 2018</a></div>
+					<div><a href="#">Admin</a></div>
+					<div>
+					  <a href="#" class="meta-chat"
+						><span class="icon-chat"></span> 3</a
+					  >
+					</div>
+				  </div>
+				  <h3 class="heading mt-2"><a href="#">The Delicious Pizza</a></h3>
+				  <p>
+					A small river named Duden flows by their place and supplies it
+					with the necessary regelialia.
+				  </p>
+				</div>
+			  </div>
+			</div>
+			<div class="col-md-4 d-flex ">
+			  <div class="blog-entry align-self-stretch">
+				<a
+				  href="blog-single.html"
+				  class="block-20"
+				  style="background-image: url('images/image_2.jpg');"
+				>
+				</a>
+				<div class="text py-4 d-block">
+				  <div class="meta">
+					<div><a href="#">Sept 10, 2018</a></div>
+					<div><a href="#">Admin</a></div>
+					<div>
+					  <a href="#" class="meta-chat"
+						><span class="icon-chat"></span> 3</a
+					  >
+					</div>
+				  </div>
+				  <h3 class="heading mt-2"><a href="#">The Delicious Pizza</a></h3>
+				  <p>
+					A small river named Duden flows by their place and supplies it
+					with the necessary regelialia.
+				  </p>
+				</div>
+			  </div>
+			</div>
+			<div class="col-md-4 d-flex ">
+			  <div class="blog-entry align-self-stretch">
+				<a
+				  href="blog-single.html"
+				  class="block-20"
+				  style="background-image: url('images/image_3.jpg');"
+				>
+				</a>
+				<div class="text py-4 d-block">
+				  <div class="meta">
+					<div><a href="#">Sept 10, 2018</a></div>
+					<div><a href="#">Admin</a></div>
+					<div>
+					  <a href="#" class="meta-chat"
+						><span class="icon-chat"></span> 3</a
+					  >
+					</div>
+				  </div>
+				  <h3 class="heading mt-2"><a href="#">The Delicious Pizza</a></h3>
+				  <p>
+					A small river named Duden flows by their place and supplies it
+					with the necessary regelialia.
+				  </p>
+				</div>
+			  </div>
+			</div> -->
+		  </div>
+		</div>
+	  </section>
+  </div>
+</template>
+
+<script>
+import BlogArticle from '@/partials/BlogArticle'
+
+export default {
+	data(){
+		return{
+			BlogArticle:[
+				{id: 1, img:"images/pizza-1.jpg", date: "Sept 10, 2018", admin: "Admin", coments:"3", title:"The Delicious Pizza", resumen:"A small river named Duden flows by their place and supplies it with the necessary regelialia"},
+				{id: 2, img:"images/pizza-1.jpg", date: "Sept 10, 2018", admin: "Admin", coments:"3", title:"The Delicious Pizza", resumen:"A small river named Duden flows by their place and supplies it with the necessary regelialia"},
+				{id: 3, img:"images/pizza-1.jpg", date: "Sept 10, 2018", admin: "Admin", coments:"3", title:"The Delicious Pizza", resumen:"A small river named Duden flows by their place and supplies it with the necessary regelialia"}
+			]
+		}
+	},
+	components:{
+		BlogArticle
+
+	}
+}
+</script>  
