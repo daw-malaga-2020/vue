@@ -45,8 +45,8 @@ export default {
   mounted() {
     Vue.notify({
       group: 'alert',
-      title: 'Notificación',
-      text: 'Bienvenido a mi sitio web, esto es una notificación de prueba.'
+      title: 'Bienvenido/a',
+      text: 'Te doy la bienvenida a mi sitio web, puedes usar el logo para volver a esta ṕagina.'
     })
   }
 }

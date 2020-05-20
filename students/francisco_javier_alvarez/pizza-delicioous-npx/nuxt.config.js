@@ -26,7 +26,7 @@ export default {
      ** Plugins to load before mounting the App
      */
     plugins: [
-        { src: '@/plugins/youtube-embed', ssr: false }
+        '@/plugins/vue-moment'
     ],
     /*
      ** Nuxt.js dev-modules
@@ -37,21 +37,24 @@ export default {
      */
     modules: [
         // Doc: https://bootstrap-vue.js.org
-        'bootstrap-vue/nuxt', [
+        'bootstrap-vue/nuxt',
+        '@nuxtjs/pwa',
+        'vue-sweetalert2/nuxt', [
             '@nuxtjs/firebase',
             {
                 config: {
-                    apiKey: "AIzaSyAyu3Wu87r9M0G1_xXQHHmToZ2qm9gHK4w",
-                    authDomain: "project-nuxt.firebaseapp.com",
-                    databaseURL: "https://project-nuxt.firebaseio.com",
-                    projectId: "project-nuxt",
-                    storageBucket: "project-nuxt.appspot.com",
-                    messagingSenderId: "917911723861",
-                    appId: "1:917911723861:web:66535bb7d452cf5788d9dc"
+                    apiKey: "AIzaSyCaD6XZ2tGYGiexJbDmjrle2XP_wWlKnic",
+                    authDomain: "pizza-delicious-a4319.firebaseapp.com",
+                    databaseURL: "https://pizza-delicious-a4319.firebaseio.com",
+                    projectId: "pizza-delicious-a4319",
+                    storageBucket: "pizza-delicious-a4319.appspot.com",
+                    messagingSenderId: "630046184489",
+                    appId: "1:630046184489:web:ba48f4a63cf9a64c9b7838",
+                    measurementId: "G-PF413QBTV8"
                 },
                 services: {
                     auth: true,
-
+                    firestore: true
                 }
             }
         ]
