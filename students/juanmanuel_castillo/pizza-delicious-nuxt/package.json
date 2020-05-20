@@ -1,0 +1,23 @@
+{
+  "name": "pizza-delicious-nuxt",
+  "version": "1.0.0",
+  "description": "Pizza Delicious en nuxt",
+  "author": "Juan Manuel Castillo Andrades",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/firebase": "^5.2.0",
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "core-js": "2.6.10",
+    "firebase": "^7.14.4",
+    "nuxt": "^2.0.0",
+    "vue-moment": "^4.1.0",
+    "vue-sweetalert2": "^3.0.5"
+  },
+  "devDependencies": {}
+}

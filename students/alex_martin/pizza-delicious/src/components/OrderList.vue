@@ -80,7 +80,6 @@
 
         </b-modal>
 
-
     </section>
 </template>
 
